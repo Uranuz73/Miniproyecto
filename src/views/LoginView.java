@@ -14,8 +14,6 @@ import javax.swing.JTextField;
 import DAO.DAO;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JPanel;

@@ -1,20 +1,22 @@
 package views;
 
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JRadioButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-import java.awt.Color;
-import java.awt.SystemColor;
-import javax.swing.UIManager;
 
 public class PeliculasView {
 
 	private JFrame frame;
+	private JButton btnSerach_bar;
+	private JButton btnlog_out;
 
 
 	public PeliculasView() {
@@ -33,6 +35,31 @@ public class PeliculasView {
 		panel.setBackground(new Color(30, 30, 30, 250));
 		panel.setBounds(0, 0, 105, 796);
 		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		btnSerach_bar = new JButton("New button");
+		btnSerach_bar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String name = JOptionPane.showInputDialog("Type your film name");
+				
+
+				System.out.println(name);
+			}
+		});
+		btnSerach_bar.setBounds(23, 28, 58, 59);
+		panel.add(btnSerach_bar);
+		
+		btnlog_out = new JButton("New button");
+		btnlog_out.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.setVisible(false);
+				new LoginView();
+			}
+		});
+		btnlog_out.setBounds(17, 591, 64, 59);
+		panel.add(btnlog_out);
 		
 		
 		JLabel lblNewLabel = new JLabel("");
