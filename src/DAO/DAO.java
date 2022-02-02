@@ -34,8 +34,8 @@ public class DAO extends AbstractDAO {
 			PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			
 		      stmt.setString (1, name);
-		      stmt.setString (2, email);
-		      stmt.setString (3, password);
+		      stmt.setString (2, password);
+		      stmt.setString (3, email);
 		      
 
 			stmt.execute();

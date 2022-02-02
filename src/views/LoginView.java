@@ -13,10 +13,15 @@ import javax.swing.JTextField;
 
 import DAO.DAO;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JPanel;
+import java.awt.SystemColor;
+import javax.swing.UIManager;
+import java.awt.Font;
 
 public class LoginView {
 
@@ -28,6 +33,7 @@ public class LoginView {
 	private JButton loginButton;
 	private DAO loginDAO;
 	private JButton registerButton;
+	private JLabel lblTitulo;
 
 	public LoginView() {
 		loginDAO = new DAO();
@@ -37,7 +43,8 @@ public class LoginView {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		//frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		frame.setBounds(100,100,1366,763);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.paint(frame.getGraphics());
 		frame.getContentPane().setLayout(null);
@@ -51,33 +58,52 @@ public class LoginView {
 		
 		
 		lblemail = new JLabel("Email");
-		lblemail.setBounds(108, 72, 52, 21);
+		lblemail.setForeground(SystemColor.window);
+		lblemail.setBounds(629, 343, 52, 21);
 		frame.getContentPane().add(lblemail);
 		
 		lblpassword = new JLabel("Password");
-		lblpassword.setBounds(108, 126, 68, 21);
+		lblpassword.setForeground(SystemColor.window);
+		lblpassword.setBounds(629, 395, 68, 21);
 		frame.getContentPane().add(lblpassword);
 		
 		txtemail =  new JTextField();
-		txtemail.setBounds(200, 73, 96, 19);
+		txtemail.setToolTipText("");
+		txtemail.setBounds(691, 343, 96, 19);
 		frame.getContentPane().add(txtemail);
 		txtemail.setColumns(10);
 		
 		txtpassword = new JPasswordField();
-		txtpassword.setBounds(200, 127, 96, 19);
+		txtpassword.setToolTipText("Password");
+		txtpassword.setBounds(691, 395, 96, 19);
 		frame.getContentPane().add(txtpassword);
 		
 		loginButton = new JButton("Login");
 		
 		
-		loginButton.setBounds(120, 182, 85, 21);
+		loginButton.setBounds(612, 465, 85, 21);
 		frame.getContentPane().add(loginButton);
 		
 		registerButton = new JButton("Register");
-				registerButton.setBounds(228, 181, 85, 21);
+				registerButton.setBounds(728, 465, 85, 21);
 		frame.getContentPane().add(registerButton);
 		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(30, 30, 30, 250));
+		panel.setBounds(553, 209, 273, 378);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
 		
+		lblTitulo = new JLabel("Sign in");
+		lblTitulo.setBounds(29, 25, 67, 26);
+		lblTitulo.setFont(new Font("Arial Black", Font.PLAIN, 18));
+		lblTitulo.setForeground(UIManager.getColor("Separator.background"));
+		panel.add(lblTitulo);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(LoginView.class.getResource("/images/cinefondo.jpg")));
+		lblNewLabel.setBounds(0, 0, 1366, 763);
+		frame.getContentPane().add(lblNewLabel);
 		
 		
 	}
@@ -118,7 +144,7 @@ public class LoginView {
 		String password = new String(txtpassword.getPassword());
 		
 		if(loginDAO.login(email, password)) {
-			new WelcomeView(email);
+			new PeliculasView();
 			frame.setVisible(false);
 			
 		} else {
@@ -126,13 +152,6 @@ public class LoginView {
 		}
 		
 		
-	}
-	
-	public void paint (Graphics g) {
-		Dimension size = frame.getSize();
-		ImageIcon imagen = new ImageIcon("/images/cinefondo.jpg");
-	    g.drawImage(imagen.getImage(), 0, 0, size.width, size.height, null);
-	  
 	}
 	
 }

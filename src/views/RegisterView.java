@@ -3,16 +3,22 @@ package views;
  import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 import DAO.DAO;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 public class RegisterView {
 
@@ -37,7 +43,7 @@ public class RegisterView {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100,100,1366,763);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		setUIComponents();
@@ -49,49 +55,70 @@ public class RegisterView {
 		
 		
 		txtEmail = new JLabel("Email");
-		txtEmail.setBounds(49, 72, 52, 21);
+		txtEmail.setForeground(SystemColor.window);
+		txtEmail.setBounds(585, 368, 52, 21);
 		frame.getContentPane().add(txtEmail);
 		
 		txtPass = new JLabel("Password");
-		txtPass.setBounds(49, 104, 68, 21);
+		txtPass.setForeground(SystemColor.window);
+		txtPass.setBounds(585, 409, 68, 21);
 		frame.getContentPane().add(txtPass);
 		
 		txtemail =  new JTextField();
-		txtemail.setBounds(170, 72, 96, 19);
+		txtemail.setBounds(693, 368, 96, 19);
 		frame.getContentPane().add(txtemail);
 		txtemail.setColumns(10);
 		
 		txtpassword = new JPasswordField();
-		txtpassword.setBounds(170, 104, 96, 19);
+		txtpassword.setBounds(693, 409, 96, 19);
 		frame.getContentPane().add(txtpassword);
 		
 		RegisterButton = new JButton("Register");
 		
 		
-		RegisterButton.setBounds(90, 182, 85, 21);
+		RegisterButton.setBounds(568, 522, 85, 21);
 		frame.getContentPane().add(RegisterButton);
 		
 		btnBack = new JButton("Back");
-				btnBack.setBounds(211, 182, 85, 21);
+				btnBack.setBounds(704, 522, 85, 21);
 		frame.getContentPane().add(btnBack);
 		
 		lblConfirmPassword = new JLabel("Confirm password");
-		lblConfirmPassword.setBounds(49, 136, 109, 21);
+		lblConfirmPassword.setForeground(SystemColor.window);
+		lblConfirmPassword.setBounds(574, 456, 109, 21);
 		frame.getContentPane().add(lblConfirmPassword);
 		
 		passwordCField = new JPasswordField();
-		passwordCField.setBounds(170, 136, 96, 19);
+		passwordCField.setBounds(693, 456, 96, 19);
 		frame.getContentPane().add(passwordCField);
 		
 		lblName = new JLabel("Name");
-		lblName.setBounds(49, 40, 52, 21);
+		lblName.setForeground(SystemColor.window);
+		lblName.setBounds(585, 324, 52, 21);
 		frame.getContentPane().add(lblName);
 		
 		textName = new JTextField();
 		textName.setColumns(10);
-		textName.setBounds(170, 40, 96, 19);
+		textName.setBounds(693, 324, 96, 19);
 		frame.getContentPane().add(textName);
 		
+
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(30, 30, 30, 250));
+		panel.setBounds(553, 209, 273, 378);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblTitulo = new JLabel("Sign up");
+		lblTitulo.setBounds(29, 25, 88, 26);
+		lblTitulo.setFont(new Font("Arial Black", Font.PLAIN, 18));
+		lblTitulo.setForeground(UIManager.getColor("Separator.background"));
+		panel.add(lblTitulo);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(LoginView.class.getResource("/images/cinefondo.jpg")));
+		lblNewLabel.setBounds(0, 0, 1366, 763);
+		frame.getContentPane().add(lblNewLabel);
 		
 		
 		
@@ -100,13 +127,7 @@ public class RegisterView {
 		RegisterButton.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {
-				String nombre = textName.getText();
-				String email =txtemail.getText();
-				String password = new String(txtpassword.getPassword());
 				loginPressed();
-				System.out.println(nombre);
-				System.out.println(email);
-				System.out.println(password);
 			}
 		});
 		
@@ -136,14 +157,16 @@ public class RegisterView {
 		String password = new String(txtpassword.getPassword());
 		String passwordC = new String(passwordCField.getPassword());
 		
-		if(password.equals(passwordC)) {
-			if(DAO.register(nombre,email,password)) {
-				new WelcomeView(email);
+		if(password.equals(passwordC) && !email.equals("")) {
+			if(DAO.register(nombre,email,password) ) {
+				new PeliculasView();
 				frame.setVisible(false);
 				
 			} else {
-				JOptionPane.showMessageDialog(frame, "Register INCORRECTO","ERROR",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(frame, "Este usuario ya existe","ERROR",JOptionPane.ERROR_MESSAGE);
 			}
+		}else {
+			JOptionPane.showMessageDialog(frame, "Faltan datos","ERROR",JOptionPane.ERROR_MESSAGE);
 		}
 		
 		
