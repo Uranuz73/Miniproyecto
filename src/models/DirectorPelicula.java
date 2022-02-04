@@ -1,5 +1,4 @@
 package models;
-
 import java.io.Serializable;
 
 /**
@@ -13,6 +12,9 @@ public class DirectorPelicula implements Serializable {
 	/** serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** Composite-id of director_pelicula. */
+	private DirectorPeliculaId directorPeliculaId;
+
 	/** Pelicula. */
 	private Pelicula pelicula;
 
@@ -23,6 +25,25 @@ public class DirectorPelicula implements Serializable {
 	 * Constructor.
 	 */
 	public DirectorPelicula() {
+	}
+
+	/**
+	 * Set the Composite-id of director_pelicula.
+	 * 
+	 * @param directorPeliculaId
+	 *            Composite-id of director_pelicula
+	 */
+	public void setDirectorPeliculaId(DirectorPeliculaId directorPeliculaId) {
+		this.directorPeliculaId = directorPeliculaId;
+	}
+
+	/**
+	 * Get the Composite-id of director_pelicula.
+	 * 
+	 * @return Composite-id of director_pelicula
+	 */
+	public DirectorPeliculaId getDirectorPeliculaId() {
+		return this.directorPeliculaId;
 	}
 
 	/**
@@ -63,5 +84,40 @@ public class DirectorPelicula implements Serializable {
 		return this.director;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((directorPeliculaId == null) ? 0 : directorPeliculaId.hashCode());
+		return result;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		DirectorPelicula other = (DirectorPelicula) obj;
+		if (directorPeliculaId == null) {
+			if (other.directorPeliculaId != null) {
+				return false;
+			}
+		} else if (!directorPeliculaId.equals(other.directorPeliculaId)) {
+			return false;
+		}
+		return true;
+	}
 
 }

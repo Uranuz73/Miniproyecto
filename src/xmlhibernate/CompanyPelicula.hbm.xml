@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="">
+
+	<class name="CompanyPelicula" table="company_pelicula">
+
+		<composite-id
+        	name="companyPeliculaId"
+        	class="CompanyPeliculaId">
+
+        	<key-property name="idcompany" type="java.lang.String" column="idcompany" />
+        	<key-property name="id" type="java.lang.String" column="id" />
+        	
+		</composite-id>
+
+	</class>
+</hibernate-mapping>

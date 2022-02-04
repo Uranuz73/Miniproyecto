@@ -53,55 +53,6 @@ public class RegisterView {
 	}
 	private void setUIComponents() {
 		
-		
-		txtEmail = new JLabel("Email");
-		txtEmail.setForeground(SystemColor.window);
-		txtEmail.setBounds(585, 368, 52, 21);
-		frame.getContentPane().add(txtEmail);
-		
-		txtPass = new JLabel("Password");
-		txtPass.setForeground(SystemColor.window);
-		txtPass.setBounds(585, 409, 68, 21);
-		frame.getContentPane().add(txtPass);
-		
-		txtemail =  new JTextField();
-		txtemail.setBounds(693, 368, 96, 19);
-		frame.getContentPane().add(txtemail);
-		txtemail.setColumns(10);
-		
-		txtpassword = new JPasswordField();
-		txtpassword.setBounds(693, 409, 96, 19);
-		frame.getContentPane().add(txtpassword);
-		
-		RegisterButton = new JButton("Register");
-		
-		
-		RegisterButton.setBounds(568, 522, 85, 21);
-		frame.getContentPane().add(RegisterButton);
-		
-		btnBack = new JButton("Back");
-				btnBack.setBounds(704, 522, 85, 21);
-		frame.getContentPane().add(btnBack);
-		
-		lblConfirmPassword = new JLabel("Confirm password");
-		lblConfirmPassword.setForeground(SystemColor.window);
-		lblConfirmPassword.setBounds(574, 456, 109, 21);
-		frame.getContentPane().add(lblConfirmPassword);
-		
-		passwordCField = new JPasswordField();
-		passwordCField.setBounds(693, 456, 96, 19);
-		frame.getContentPane().add(passwordCField);
-		
-		lblName = new JLabel("Name");
-		lblName.setForeground(SystemColor.window);
-		lblName.setBounds(585, 324, 52, 21);
-		frame.getContentPane().add(lblName);
-		
-		textName = new JTextField();
-		textName.setColumns(10);
-		textName.setBounds(693, 324, 96, 19);
-		frame.getContentPane().add(textName);
-		
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(30, 30, 30, 250));
@@ -114,6 +65,53 @@ public class RegisterView {
 		lblTitulo.setFont(new Font("Arial Black", Font.PLAIN, 18));
 		lblTitulo.setForeground(UIManager.getColor("Separator.background"));
 		panel.add(lblTitulo);
+		
+		RegisterButton = new JButton("Register");
+		RegisterButton.setBounds(29, 298, 85, 21);
+		panel.add(RegisterButton);
+		
+		lblName = new JLabel("Name");
+		lblName.setBounds(34, 96, 52, 21);
+		panel.add(lblName);
+		lblName.setForeground(SystemColor.window);
+		
+		
+		txtEmail = new JLabel("Email");
+		txtEmail.setBounds(34, 140, 52, 21);
+		panel.add(txtEmail);
+		txtEmail.setForeground(SystemColor.window);
+		
+		txtPass = new JLabel("Password");
+		txtPass.setBounds(34, 181, 68, 21);
+		panel.add(txtPass);
+		txtPass.setForeground(SystemColor.window);
+		
+		lblConfirmPassword = new JLabel("Confirm password");
+		lblConfirmPassword.setBounds(23, 228, 109, 21);
+		panel.add(lblConfirmPassword);
+		lblConfirmPassword.setForeground(SystemColor.window);
+		
+		passwordCField = new JPasswordField();
+		passwordCField.setBounds(142, 228, 96, 19);
+		panel.add(passwordCField);
+		
+		txtpassword = new JPasswordField();
+		txtpassword.setBounds(142, 181, 96, 19);
+		panel.add(txtpassword);
+		
+		txtemail =  new JTextField();
+		txtemail.setBounds(142, 140, 96, 19);
+		panel.add(txtemail);
+		txtemail.setColumns(10);
+		
+		textName = new JTextField();
+		textName.setBounds(142, 96, 96, 19);
+		panel.add(textName);
+		textName.setColumns(10);
+		
+		btnBack = new JButton("Back");
+		btnBack.setBounds(153, 298, 85, 21);
+		panel.add(btnBack);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(LoginView.class.getResource("/images/cinefondo.jpg")));

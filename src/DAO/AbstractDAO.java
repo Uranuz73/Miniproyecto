@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class AbstractDAO {
-	protected Connection conn;
+	protected static Connection conn;
 	
 	public AbstractDAO() {
 		try {

@@ -57,34 +57,8 @@ public class LoginView {
 		
 		lblemail = new JLabel("Email");
 		lblemail.setForeground(SystemColor.window);
-		lblemail.setBounds(629, 343, 52, 21);
+		lblemail.setBounds(612, 343, 52, 21);
 		frame.getContentPane().add(lblemail);
-		
-		lblpassword = new JLabel("Password");
-		lblpassword.setForeground(SystemColor.window);
-		lblpassword.setBounds(629, 395, 68, 21);
-		frame.getContentPane().add(lblpassword);
-		
-		txtemail =  new JTextField();
-		txtemail.setToolTipText("");
-		txtemail.setBounds(691, 343, 96, 19);
-		frame.getContentPane().add(txtemail);
-		txtemail.setColumns(10);
-		
-		txtpassword = new JPasswordField();
-		txtpassword.setToolTipText("Password");
-		txtpassword.setBounds(691, 395, 96, 19);
-		frame.getContentPane().add(txtpassword);
-		
-		loginButton = new JButton("Login");
-		
-		
-		loginButton.setBounds(612, 465, 85, 21);
-		frame.getContentPane().add(loginButton);
-		
-		registerButton = new JButton("Register");
-				registerButton.setBounds(728, 465, 85, 21);
-		frame.getContentPane().add(registerButton);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(30, 30, 30, 250));
@@ -98,6 +72,30 @@ public class LoginView {
 		lblTitulo.setForeground(UIManager.getColor("Separator.background"));
 		panel.add(lblTitulo);
 		
+		lblpassword = new JLabel("Password");
+		lblpassword.setBounds(43, 185, 68, 21);
+		panel.add(lblpassword);
+		lblpassword.setForeground(SystemColor.window);
+		
+		txtemail =  new JTextField();
+		txtemail.setBounds(129, 134, 96, 19);
+		panel.add(txtemail);
+		txtemail.setToolTipText("");
+		txtemail.setColumns(10);
+		
+		txtpassword = new JPasswordField();
+		txtpassword.setBounds(132, 185, 96, 19);
+		panel.add(txtpassword);
+		txtpassword.setToolTipText("Password");
+		
+		loginButton = new JButton("Login");
+		loginButton.setBounds(29, 256, 85, 21);
+		panel.add(loginButton);
+		
+		registerButton = new JButton("Register");
+		registerButton.setBounds(152, 256, 85, 21);
+		panel.add(registerButton);
+		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(LoginView.class.getResource("/images/cinefondo.jpg")));
 		lblNewLabel.setBounds(0, 0, 1366, 763);
@@ -109,12 +107,8 @@ public class LoginView {
 		loginButton.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e) {
-				String email =txtemail.getText();
-				String password = new String(txtpassword.getPassword());
 				loginPressed();
 
-				System.out.println(email);
-				System.out.println(password);
 			}
 		});
 		

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="">
+
+	<class name="GenreFilm" table="genre_film">
+
+		<composite-id
+        	name="genreFilmId"
+        	class="GenreFilmId">
+
+        	<key-property name="id" type="java.lang.String" column="id" />
+        	<key-property name="idgenre" type="java.lang.String" column="idgenre" />
+        	
+		</composite-id>
+
+		<property name="genreName" type="java.lang.String"
+			column="genre_name" not-null="false" />
+
+	</class>
+</hibernate-mapping>

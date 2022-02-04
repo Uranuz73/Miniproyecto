@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="">
+
+	<class name="Actor" table="Actor">
+
+		<id name="idactor" type="java.lang.String" column="idactor">
+			<generator class="assigned" />
+		</id>
+
+		<property name="name" type="java.lang.String"
+			column="name" not-null="false" />
+
+		<property name="bio" type="java.lang.String"
+			column="bio" not-null="false" />
+
+		<property name="born" type="java.util.Date"
+			column="born" not-null="false" />
+
+		<property name="country" type="java.lang.String"
+			column="country" not-null="false" />
+
+	</class>
+</hibernate-mapping>

@@ -1,6 +1,5 @@
 package main;
 
-import API.API;
 import views.LoginView;
 
 public class MainApp {
@@ -10,7 +9,7 @@ public class MainApp {
         
         
        
-        //System.out.println(API.Consulta("Inception"));
+        
         
     }
 

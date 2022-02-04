@@ -1,5 +1,4 @@
 package models;
-
 import java.io.Serializable;
 
 /**
@@ -13,6 +12,9 @@ public class UsuarioPelicula implements Serializable {
 	/** serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/** Composite-id of usuario_pelicula. */
+	private UsuarioPeliculaId usuarioPeliculaId;
+
 	/** usuario. */
 	private Usuario usuario;
 
@@ -23,6 +25,25 @@ public class UsuarioPelicula implements Serializable {
 	 * Constructor.
 	 */
 	public UsuarioPelicula() {
+	}
+
+	/**
+	 * Set the Composite-id of usuario_pelicula.
+	 * 
+	 * @param usuarioPeliculaId
+	 *            Composite-id of usuario_pelicula
+	 */
+	public void setUsuarioPeliculaId(UsuarioPeliculaId usuarioPeliculaId) {
+		this.usuarioPeliculaId = usuarioPeliculaId;
+	}
+
+	/**
+	 * Get the Composite-id of usuario_pelicula.
+	 * 
+	 * @return Composite-id of usuario_pelicula
+	 */
+	public UsuarioPeliculaId getUsuarioPeliculaId() {
+		return this.usuarioPeliculaId;
 	}
 
 	/**
@@ -63,5 +84,40 @@ public class UsuarioPelicula implements Serializable {
 		return this.pelicula;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((usuarioPeliculaId == null) ? 0 : usuarioPeliculaId.hashCode());
+		return result;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		UsuarioPelicula other = (UsuarioPelicula) obj;
+		if (usuarioPeliculaId == null) {
+			if (other.usuarioPeliculaId != null) {
+				return false;
+			}
+		} else if (!usuarioPeliculaId.equals(other.usuarioPeliculaId)) {
+			return false;
+		}
+		return true;
+	}
 
 }

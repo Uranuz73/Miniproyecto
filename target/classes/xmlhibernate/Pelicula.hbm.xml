@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="">
+
+	<class name="Pelicula" table="Pelicula">
+
+		<id name="id" type="java.lang.String" column="id">
+			<generator class="assigned" />
+		</id>
+
+		<property name="title" type="java.lang.String"
+			column="title" not-null="false" />
+
+		<property name="year" type="java.lang.Integer"
+			column="year" not-null="false" />
+
+		<property name="duration" type="java.lang.Integer"
+			column="duration" not-null="false" />
+
+		<property name="description" type="java.lang.String"
+			column="description" not-null="false" />
+
+		<property name="poster" type="java.lang.String"
+			column="poster" not-null="false" />
+
+		<property name="valoration" type="java.lang.Float"
+			column="valoration" not-null="false" />
+
+		<property name="director" type="java.lang.String"
+			column="director" not-null="false" />
+
+		<property name="fullTitle" type="java.lang.String"
+			column="full_title" not-null="false" />
+
+		<property name="image" type="java.sql.Blob"
+			column="image" not-null="false" />
+
+		<property name="type" type="java.lang.String"
+			column="type" not-null="false" />
+
+		<property name="releaseDate" type="java.util.Date"
+			column="release_date" not-null="false" />
+
+	</class>
+</hibernate-mapping>

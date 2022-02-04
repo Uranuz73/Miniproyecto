@@ -1,8 +1,5 @@
 package models;
-
 import java.io.Serializable;
-import java.sql.Blob;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,40 +15,40 @@ public class Pelicula implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/** id. */
-	private String id;
+	public String id;
 
 	/** title. */
-	private String title;
+	public String title;
 
 	/** year. */
-	private Integer year;
+	public Integer year;
 
 	/** duration. */
-	private Integer duration;
+	public Integer duration;
 
 	/** description. */
-	private String description;
+	public String description;
 
 	/** poster. */
-	private String poster;
+	public String poster;
 
 	/** valoration. */
-	private Float valoration;
+	public Double valoration;
 
 	/** director. */
-	private String director;
+	public String director;
 
 	/** full_title. */
-	private String fullTitle;
+	public String fullTitle;
 
 	/** image. */
-	private Blob image;
+	public String image;
 
-	/** 255. */
-	//private String 255;
+	/** type. */
+	public String type;
 
 	/** release_date. */
-	private Date releaseDate;
+	public String releaseDate;
 
 	/** The set of Actor_film. */
 	private Set<ActorFilm> actorFilmSet;
@@ -70,14 +67,40 @@ public class Pelicula implements Serializable {
 
 	/**
 	 * Constructor.
+	 * @param releaseDate
+	 * @param type
+	 * @param image
+	 * @param fullTitle
+	 * @param director
+	 * @param valoration
+	 * @param poster
+	 * @param description
+	 * @param duration
+	 * @param year
+	 * @param title
+	 * @param id
 	 */
-	public Pelicula() {
+	public Pelicula(String id, String title, Integer year, Integer duration, String description, String poster, Double valoration, String director, String fullTitle, String image, String type, String releaseDate) {
+		this.id =id;
+		this.title=title;
+		this.year = year;
+		this.duration=duration;
+		this.description=description;
+		this.poster=poster;
+		this.valoration=valoration;
+		this.fullTitle =fullTitle;
+		this.image = image;
+		this.type=type;
+		this.releaseDate=releaseDate;
+		this.director =director;
 		this.actorFilmSet = new HashSet<ActorFilm>();
 		this.companyPeliculaSet = new HashSet<CompanyPelicula>();
 		this.directorPeliculaSet = new HashSet<DirectorPelicula>();
 		this.genreFilmSet = new HashSet<GenreFilm>();
 		this.usuarioPeliculaSet = new HashSet<UsuarioPelicula>();
 	}
+	
+
 
 	/**
 	 * Set the id.
@@ -88,6 +111,18 @@ public class Pelicula implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "Pelicula [id=" + id + ", title=" + title + ", year=" + year + ", duration=" + duration
+				+ ", description=" + description + ", poster=" + poster + ", valoration=" + valoration + ", director="
+				+ director + ", fullTitle=" + fullTitle + ", image=" + image + ", type=" + type + ", releaseDate="
+				+ releaseDate + ", actorFilmSet=" + actorFilmSet + ", companyPeliculaSet=" + companyPeliculaSet
+				+ ", directorPeliculaSet=" + directorPeliculaSet + ", genreFilmSet=" + genreFilmSet
+				+ ", usuarioPeliculaSet=" + usuarioPeliculaSet + "]";
+	}
+
+
 
 	/**
 	 * Get the id.
@@ -199,7 +234,7 @@ public class Pelicula implements Serializable {
 	 * @param valoration
 	 *            valoration
 	 */
-	public void setValoration(Float valoration) {
+	public void setValoration(Double valoration) {
 		this.valoration = valoration;
 	}
 
@@ -208,7 +243,7 @@ public class Pelicula implements Serializable {
 	 * 
 	 * @return valoration
 	 */
-	public Float getValoration() {
+	public Double getValoration() {
 		return this.valoration;
 	}
 
@@ -256,7 +291,7 @@ public class Pelicula implements Serializable {
 	 * @param image
 	 *            image
 	 */
-	public void setImage(Blob image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
@@ -265,28 +300,28 @@ public class Pelicula implements Serializable {
 	 * 
 	 * @return image
 	 */
-	public Blob getImage() {
+	public String getImage() {
 		return this.image;
 	}
 
 	/**
-	 * Set the 255.
+	 * Set the type.
 	 * 
-	 * @param 255
-	 *            255
+	 * @param type
+	 *            type
 	 */
-//	public void set255(String 255) {
-//		this.255 = 255;
-//	}
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	/**
-	 * Get the 255.
+	 * Get the type.
 	 * 
-	 * @return 255
+	 * @return type
 	 */
-//	public String get255() {
-//		return this.255;
-//	}
+	public String getType() {
+		return this.type;
+	}
 
 	/**
 	 * Set the release_date.
@@ -294,7 +329,7 @@ public class Pelicula implements Serializable {
 	 * @param releaseDate
 	 *            release_date
 	 */
-	public void setReleaseDate(Date releaseDate) {
+	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 
@@ -303,7 +338,7 @@ public class Pelicula implements Serializable {
 	 * 
 	 * @return release_date
 	 */
-	public Date getReleaseDate() {
+	public String getReleaseDate() {
 		return this.releaseDate;
 	}
 

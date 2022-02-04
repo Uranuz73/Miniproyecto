@@ -1,5 +1,4 @@
 package models;
-
 import java.io.Serializable;
 
 /**
@@ -12,6 +11,9 @@ public class GenreFilm implements Serializable {
 
 	/** serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
+	/** Composite-id of genre_film. */
+	private GenreFilmId genreFilmId;
 
 	/** Pelicula. */
 	private Pelicula pelicula;
@@ -26,6 +28,25 @@ public class GenreFilm implements Serializable {
 	 * Constructor.
 	 */
 	public GenreFilm() {
+	}
+
+	/**
+	 * Set the Composite-id of genre_film.
+	 * 
+	 * @param genreFilmId
+	 *            Composite-id of genre_film
+	 */
+	public void setGenreFilmId(GenreFilmId genreFilmId) {
+		this.genreFilmId = genreFilmId;
+	}
+
+	/**
+	 * Get the Composite-id of genre_film.
+	 * 
+	 * @return Composite-id of genre_film
+	 */
+	public GenreFilmId getGenreFilmId() {
+		return this.genreFilmId;
 	}
 
 	/**
@@ -85,5 +106,40 @@ public class GenreFilm implements Serializable {
 		return this.genreName;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((genreFilmId == null) ? 0 : genreFilmId.hashCode());
+		return result;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		GenreFilm other = (GenreFilm) obj;
+		if (genreFilmId == null) {
+			if (other.genreFilmId != null) {
+				return false;
+			}
+		} else if (!genreFilmId.equals(other.genreFilmId)) {
+			return false;
+		}
+		return true;
+	}
 
 }
