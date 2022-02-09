@@ -85,7 +85,6 @@ public class DAO extends AbstractDAO {
 		      
 
 			stmt.execute();
-			conn.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
@@ -118,7 +117,6 @@ public class DAO extends AbstractDAO {
 		      
 
 			stmt.execute();
-			conn.close();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());

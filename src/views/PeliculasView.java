@@ -27,12 +27,13 @@ public class PeliculasView {
 	private JButton btnlog_out;
 	private JTable table;
 	private ArrayList<String> PeliculasTabla = new ArrayList<>();
-
+	private String[][] tabla;
 	
 	
 	public PeliculasView() {
 		
-				this.PeliculasTabla = DAO.getPelicula();
+		this.PeliculasTabla = DAO.getPelicula();
+		this.tabla = new String[PeliculasTabla.size()][2];
 		
 		initialize();
 		
@@ -41,13 +42,17 @@ public class PeliculasView {
 
 
 	private void initialize() {
+		
+//TODO cambiar icono del mouse:
+	//TODO https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_Ratio0.6762_AL_.jpg zoom
+	//	https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_
+		//TODO https://imdb-api.com/images/original/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_QL75_UX75_CR0,0,75,100_.jpg chiquita
 
 		frame = new JFrame();
 		frame.setVisible(true);
 		frame.setBounds(100,100,1256,835);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		String[][] tabla = new String[PeliculasTabla.size()][2];		
+		frame.getContentPane().setLayout(null);	
 		
 		for (int i = 0; i < PeliculasTabla.size(); i++) {
 			tabla[i][1] = PeliculasTabla.get(i);
