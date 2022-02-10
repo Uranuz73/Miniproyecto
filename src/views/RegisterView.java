@@ -25,15 +25,15 @@ public class RegisterView {
 	private JFrame frame;
 	private JTextField txtemail;
 	private JPasswordField txtpassword;
-	private JLabel txtEmail;
-	private JLabel txtPass;
+	private JLabel lblEmail;
+	private JLabel lblPass;
 	private JButton RegisterButton;
 	private DAO DAO;
-	private JPasswordField passwordCField;
+	private JPasswordField txtCPass;
 	private JLabel lblName;
 	private JTextField textName;
 	private JButton btnBack;
-	private JLabel lblConfirmPassword;
+	private JLabel lblCPass;
 
 	public RegisterView() {
 		DAO = new DAO();
@@ -76,24 +76,24 @@ public class RegisterView {
 		lblName.setForeground(SystemColor.window);
 		
 		
-		txtEmail = new JLabel("Email");
-		txtEmail.setBounds(34, 140, 52, 21);
-		panel.add(txtEmail);
-		txtEmail.setForeground(SystemColor.window);
+		lblEmail = new JLabel("Email");
+		lblEmail.setBounds(34, 140, 52, 21);
+		panel.add(lblEmail);
+		lblEmail.setForeground(SystemColor.window);
 		
-		txtPass = new JLabel("Password");
-		txtPass.setBounds(34, 181, 68, 21);
-		panel.add(txtPass);
-		txtPass.setForeground(SystemColor.window);
+		lblPass = new JLabel("Password");
+		lblPass.setBounds(34, 181, 68, 21);
+		panel.add(lblPass);
+		lblPass.setForeground(SystemColor.window);
 		
-		lblConfirmPassword = new JLabel("Confirm password");
-		lblConfirmPassword.setBounds(23, 228, 109, 21);
-		panel.add(lblConfirmPassword);
-		lblConfirmPassword.setForeground(SystemColor.window);
+		lblCPass = new JLabel("Confirm password");
+		lblCPass.setBounds(23, 228, 109, 21);
+		panel.add(lblCPass);
+		lblCPass.setForeground(SystemColor.window);
 		
-		passwordCField = new JPasswordField();
-		passwordCField.setBounds(142, 228, 96, 19);
-		panel.add(passwordCField);
+		txtCPass = new JPasswordField();
+		txtCPass.setBounds(142, 228, 96, 19);
+		panel.add(txtCPass);
 		
 		txtpassword = new JPasswordField();
 		txtpassword.setBounds(142, 181, 96, 19);
@@ -113,10 +113,10 @@ public class RegisterView {
 		btnBack.setBounds(153, 298, 85, 21);
 		panel.add(btnBack);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(LoginView.class.getResource("/images/cinefondo.jpg")));
-		lblNewLabel.setBounds(0, 0, 1366, 763);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(LoginView.class.getResource("/images/cinefondo.jpg")));
+		lblFondo.setBounds(0, 0, 1366, 763);
+		frame.getContentPane().add(lblFondo);
 		
 		
 		
@@ -153,7 +153,7 @@ public class RegisterView {
 		String nombre = textName.getText();
 		String email = txtemail.getText();
 		String password = new String(txtpassword.getPassword());
-		String passwordC = new String(passwordCField.getPassword());
+		String passwordC = new String(txtCPass.getPassword());
 		
 		if(password.equals(passwordC) && !email.equals("")) {
 			if(DAO.register(nombre,email,password) ) {

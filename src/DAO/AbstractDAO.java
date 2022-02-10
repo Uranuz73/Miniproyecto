@@ -11,7 +11,7 @@ public abstract class AbstractDAO {
 		try {
 
 
-			this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/miniproyectodb?serverTimezone=UTC", "UsuarioPokedex",
+			AbstractDAO.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/miniproyectodb?serverTimezone=UTC", "UsuarioPokedex",
 					"P@ssword");
 
 

@@ -38,12 +38,16 @@ public class DAO extends AbstractDAO {
 			
 			
 			Statement stmt = conn.createStatement();
-			String sql = "SELECT full_title FROM pelicula;";
+			String sql = "SELECT id,image,full_title FROM pelicula;";
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
-				String name = rs.getString(1);
+				String id = rs.getString(1);
+				String url = rs.getString(2);
+				String title = rs.getString(3);
 
-				PeliculasTabla.add(name);
+				PeliculasTabla.add(id);
+				PeliculasTabla.add(url);
+				PeliculasTabla.add(title);
 			}
 			
 			

@@ -26,12 +26,12 @@ public class LoginView {
 	private JFrame frame;
 	private JTextField txtemail;
 	private JPasswordField txtpassword;
-	private JLabel lblemail;
-	private JLabel lblpassword;
+	private JLabel lblPass;
 	private JButton loginButton;
 	private DAO loginDAO;
 	private JButton registerButton;
 	private JLabel lblTitulo;
+	private JLabel lblEmail;
 
 	public LoginView() {
 		loginDAO = new DAO();
@@ -54,12 +54,6 @@ public class LoginView {
 	}
 	private void setUIComponents() {
 		
-		
-		lblemail = new JLabel("Email");
-		lblemail.setForeground(SystemColor.window);
-		lblemail.setBounds(612, 343, 52, 21);
-		frame.getContentPane().add(lblemail);
-		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(30, 30, 30, 250));
 		panel.setBounds(553, 209, 273, 378);
@@ -72,10 +66,10 @@ public class LoginView {
 		lblTitulo.setForeground(UIManager.getColor("Separator.background"));
 		panel.add(lblTitulo);
 		
-		lblpassword = new JLabel("Password");
-		lblpassword.setBounds(43, 185, 68, 21);
-		panel.add(lblpassword);
-		lblpassword.setForeground(SystemColor.window);
+		lblPass = new JLabel("Password");
+		lblPass.setBounds(43, 185, 68, 21);
+		panel.add(lblPass);
+		lblPass.setForeground(SystemColor.window);
 		
 		txtemail =  new JTextField();
 		txtemail.setBounds(129, 134, 96, 19);
@@ -96,13 +90,19 @@ public class LoginView {
 		registerButton.setBounds(152, 256, 85, 21);
 		panel.add(registerButton);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(LoginView.class.getResource("/images/cinefondo.jpg")));
-		lblNewLabel.setBounds(0, 0, 1366, 763);
-		frame.getContentPane().add(lblNewLabel);
+		lblEmail = new JLabel("Email");
+		lblEmail.setBounds(43, 134, 52, 21);
+		panel.add(lblEmail);
+		lblEmail.setForeground(Color.WHITE);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(LoginView.class.getResource("/images/cinefondo.jpg")));
+		lblFondo.setBounds(0, 0, 1366, 763);
+		frame.getContentPane().add(lblFondo);
 		
 		
 	}
+	
 	private void setListeners() {
 		loginButton.addMouseListener(new MouseAdapter() {
 			
