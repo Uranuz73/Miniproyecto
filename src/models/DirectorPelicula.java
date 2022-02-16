@@ -16,16 +16,22 @@ public class DirectorPelicula implements Serializable {
 	private DirectorPeliculaId directorPeliculaId;
 
 	/** Pelicula. */
-	private Pelicula pelicula;
+	public String peliculaid;
 
 	/** Director. */
-	private Director director;
+	public String directorid;
 
 	/**
 	 * Constructor.
 	 */
-	public DirectorPelicula() {
+	public DirectorPelicula(String directorid,String peliculaid) {
+		
+		this.peliculaid = peliculaid;
+		this.directorid = directorid;
 	}
+	
+	
+	
 
 	/**
 	 * Set the Composite-id of director_pelicula.
@@ -52,8 +58,8 @@ public class DirectorPelicula implements Serializable {
 	 * @param pelicula
 	 *            Pelicula
 	 */
-	public void setPelicula(Pelicula pelicula) {
-		this.pelicula = pelicula;
+	public void setPelicula(String pelicula) {
+		this.peliculaid = pelicula;
 	}
 
 	/**
@@ -61,8 +67,8 @@ public class DirectorPelicula implements Serializable {
 	 * 
 	 * @return Pelicula
 	 */
-	public Pelicula getPelicula() {
-		return this.pelicula;
+	public String getPelicula() {
+		return this.peliculaid;
 	}
 
 	/**
@@ -71,8 +77,8 @@ public class DirectorPelicula implements Serializable {
 	 * @param director
 	 *            Director
 	 */
-	public void setDirector(Director director) {
-		this.director = director;
+	public void setDirector(String director) {
+		this.directorid = director;
 	}
 
 	/**
@@ -80,8 +86,8 @@ public class DirectorPelicula implements Serializable {
 	 * 
 	 * @return Director
 	 */
-	public Director getDirector() {
-		return this.director;
+	public String getDirector() {
+		return this.directorid;
 	}
 
 	/**

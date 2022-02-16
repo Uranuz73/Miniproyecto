@@ -6,6 +6,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import models.Actor;
+import models.ActorFilm;
+import models.Company;
+import models.CompanyPelicula;
+import models.Director;
+import models.DirectorPelicula;
+import models.GenreFilm;
+import models.Genres;
 import models.Pelicula;
 
 public class DAO extends AbstractDAO {
@@ -98,7 +106,7 @@ public class DAO extends AbstractDAO {
 		return true;
 	}
 	
-	public static boolean inserpeliculas(Pelicula pelicula) {
+	public static boolean insertpeliculas(Pelicula pelicula) {
 		try {
 			
 			String sql = "INSERT INTO pelicula (id,title,year,duration,description,poster,valoration,director,full_title,image,type,release_date) values (?,?,?,?,?,?,?,?,?,?,?,?);";
@@ -129,4 +137,196 @@ public class DAO extends AbstractDAO {
 		
 		return true;
 	}
+	
+	
+	public static boolean insertCompany(Company company) {
+		try {
+			
+			String sql = "INSERT INTO company (idcompany,name) values (?,?);";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+		      stmt.setString (1,company.idcompany);
+		      stmt.setString (2,company.name);
+
+		      
+		      
+
+			stmt.execute();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean insertCP(CompanyPelicula cp) {
+		try {
+			
+			String sql = "INSERT INTO company_pelicula (idcompany,id) values (?,?);";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+		      stmt.setString (1,cp.companyid);
+		      stmt.setString (2,cp.peliculaid);
+
+		      
+		      
+
+			stmt.execute();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean insertDirector(Director director) {
+		try {
+			
+			String sql = "INSERT INTO director (iddirector,name) values (?,?);";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+		      stmt.setString (1,director.iddirector);
+		      stmt.setString (2,director.name);
+
+		      
+		      
+
+			stmt.execute();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean insertDP(DirectorPelicula dp) {
+		try {
+			
+			String sql = "INSERT INTO director_pelicula (id,iddirector) values (?,?);";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+		      stmt.setString (1,dp.peliculaid);
+		      stmt.setString (2,dp.directorid);
+
+		      
+		      
+
+			stmt.execute();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean insertActor(Actor actor) {
+		try {
+			
+			String sql = "INSERT INTO actor (idactor,name,image) values (?,?,?);";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+		      stmt.setString (1,actor.idactor);
+		      stmt.setString (2,actor.name);
+		      stmt.setString(3, actor.image);
+
+		      
+		      
+
+			stmt.execute();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			return false;
+		}
+		
+		return true;
+		
+		
+		
+	}
+	
+	public static boolean insertAP(ActorFilm ap) {
+		try {
+			
+			String sql = "INSERT INTO actor_film (id,idactor,character_film) values (?,?,?);";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+		      stmt.setString (1,ap.peliculaid);
+		      stmt.setString (2,ap.actorid);
+		      stmt.setString (3,ap.character);
+
+		      
+		      
+
+			stmt.execute();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean insertGenre(Genres genre) {
+		try {
+			
+			String sql = "INSERT INTO genres (idgenre,name) values (?,?);";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+		      stmt.setString (1,genre.idgenre);
+		      stmt.setString (2,genre.name);
+
+		      
+		      
+
+			stmt.execute();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean insertGP(GenreFilm gp) {
+		try {
+			
+			String sql = "INSERT INTO genre_film (idgenre,peliculaid) values (?,?);";
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+		      stmt.setString (1,gp.genres);
+		      stmt.setString (2,gp.pelicula);
+
+
+		      
+		      
+
+			stmt.execute();
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
+	
 }

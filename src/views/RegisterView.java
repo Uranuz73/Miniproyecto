@@ -157,7 +157,7 @@ public class RegisterView {
 		
 		if(password.equals(passwordC) && !email.equals("")) {
 			if(DAO.register(nombre,email,password) ) {
-				new PeliculasView();
+				new LoginView();
 				frame.setVisible(false);
 				
 			} else {

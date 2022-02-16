@@ -1,6 +1,5 @@
 package models;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -15,10 +14,15 @@ public class Genres implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/** idgenre. */
-	private String idgenre;
+	public String idgenre;
 
 	/** name. */
-	private String name;
+	public String name;
+
+	@Override
+	public String toString() {
+		return "Genres [idgenre=" + idgenre + ", name=" + name + "]";
+	}
 
 	/** The set of genre_film. */
 	private Set<GenreFilm> genreFilmSet;
@@ -26,8 +30,9 @@ public class Genres implements Serializable {
 	/**
 	 * Constructor.
 	 */
-	public Genres() {
-		this.genreFilmSet = new HashSet<GenreFilm>();
+	public Genres(String name,String idgenre) {
+		this.idgenre = idgenre;
+		this.name =name;
 	}
 
 	/**

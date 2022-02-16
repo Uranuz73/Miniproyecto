@@ -136,7 +136,7 @@ public class LoginView {
 		String password = new String(txtpassword.getPassword());
 		
 		if(loginDAO.login(email, password)) {
-			new PeliculasView();
+			new PeliculasView(0);
 			frame.setVisible(false);
 			
 		} else {

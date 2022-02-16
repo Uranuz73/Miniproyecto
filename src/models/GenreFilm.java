@@ -16,10 +16,10 @@ public class GenreFilm implements Serializable {
 	private GenreFilmId genreFilmId;
 
 	/** Pelicula. */
-	private Pelicula pelicula;
+	public String pelicula;
 
 	/** Genres. */
-	private Genres genres;
+	public String genres;
 
 	/** genre_name. */
 	private String genreName;
@@ -27,7 +27,14 @@ public class GenreFilm implements Serializable {
 	/**
 	 * Constructor.
 	 */
-	public GenreFilm() {
+	public GenreFilm(String genre, String pelicula) {
+		this.genres = genre;
+		this.pelicula = pelicula;
+	}
+
+	@Override
+	public String toString() {
+		return "GenreFilm [pelicula=" + pelicula + ", genres=" + genres + "]";
 	}
 
 	/**
@@ -55,7 +62,7 @@ public class GenreFilm implements Serializable {
 	 * @param pelicula
 	 *            Pelicula
 	 */
-	public void setPelicula(Pelicula pelicula) {
+	public void setPelicula(String pelicula) {
 		this.pelicula = pelicula;
 	}
 
@@ -64,7 +71,7 @@ public class GenreFilm implements Serializable {
 	 * 
 	 * @return Pelicula
 	 */
-	public Pelicula getPelicula() {
+	public String getPelicula() {
 		return this.pelicula;
 	}
 
@@ -74,7 +81,7 @@ public class GenreFilm implements Serializable {
 	 * @param genres
 	 *            Genres
 	 */
-	public void setGenres(Genres genres) {
+	public void setGenres(String genres) {
 		this.genres = genres;
 	}
 
@@ -83,7 +90,7 @@ public class GenreFilm implements Serializable {
 	 * 
 	 * @return Genres
 	 */
-	public Genres getGenres() {
+	public String getGenres() {
 		return this.genres;
 	}
 

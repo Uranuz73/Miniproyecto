@@ -1,7 +1,5 @@
 package models;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -16,13 +14,13 @@ public class Director implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/** iddirector. */
-	private String iddirector;
+	public String iddirector;
 
 	/** name. */
-	private String name;
+	public String name;
 
 	/** born. */
-	private Date born;
+	//private Date born;
 
 	/** The set of director_pelicula. */
 	private Set<DirectorPelicula> directorPeliculaSet;
@@ -30,8 +28,9 @@ public class Director implements Serializable {
 	/**
 	 * Constructor.
 	 */
-	public Director() {
-		this.directorPeliculaSet = new HashSet<DirectorPelicula>();
+	public Director(String id, String name) {
+		this.iddirector= id;
+		this.name = name;
 	}
 
 	/**
@@ -78,18 +77,7 @@ public class Director implements Serializable {
 	 * @param born
 	 *            born
 	 */
-	public void setBorn(Date born) {
-		this.born = born;
-	}
 
-	/**
-	 * Get the born.
-	 * 
-	 * @return born
-	 */
-	public Date getBorn() {
-		return this.born;
-	}
 
 	/**
 	 * Set the set of the director_pelicula.
@@ -99,6 +87,12 @@ public class Director implements Serializable {
 	 */
 	public void setDirectorPeliculaSet(Set<DirectorPelicula> directorPeliculaSet) {
 		this.directorPeliculaSet = directorPeliculaSet;
+	}
+
+	@Override
+	public String toString() {
+		return "Director [iddirector=" + iddirector + ", name=" + name + ", directorPeliculaSet=" + directorPeliculaSet
+				+ "]";
 	}
 
 	/**

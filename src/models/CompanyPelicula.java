@@ -13,38 +13,23 @@ public class CompanyPelicula implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/** Composite-id of company_pelicula. */
-	private CompanyPeliculaId companyPeliculaId;
+	
 
 	/** Company. */
-	private Company company;
+	public String companyid;
 
 	/** Pelicula. */
-	private Pelicula pelicula;
+	public String peliculaid;
 
 	/**
 	 * Constructor.
 	 */
-	public CompanyPelicula() {
+	public CompanyPelicula(String idcompany, String peliculaid) {
+		this.companyid = idcompany;
+		this.peliculaid = peliculaid;
+		
 	}
 
-	/**
-	 * Set the Composite-id of company_pelicula.
-	 * 
-	 * @param companyPeliculaId
-	 *            Composite-id of company_pelicula
-	 */
-	public void setCompanyPeliculaId(CompanyPeliculaId companyPeliculaId) {
-		this.companyPeliculaId = companyPeliculaId;
-	}
-
-	/**
-	 * Get the Composite-id of company_pelicula.
-	 * 
-	 * @return Composite-id of company_pelicula
-	 */
-	public CompanyPeliculaId getCompanyPeliculaId() {
-		return this.companyPeliculaId;
-	}
 
 	/**
 	 * Set the Company.
@@ -52,8 +37,8 @@ public class CompanyPelicula implements Serializable {
 	 * @param company
 	 *            Company
 	 */
-	public void setCompany(Company company) {
-		this.company = company;
+	public void setCompany(String company) {
+		this.companyid = company;
 	}
 
 	/**
@@ -61,8 +46,8 @@ public class CompanyPelicula implements Serializable {
 	 * 
 	 * @return Company
 	 */
-	public Company getCompany() {
-		return this.company;
+	public String getCompany() {
+		return this.companyid;
 	}
 
 	/**
@@ -71,8 +56,8 @@ public class CompanyPelicula implements Serializable {
 	 * @param pelicula
 	 *            Pelicula
 	 */
-	public void setPelicula(Pelicula pelicula) {
-		this.pelicula = pelicula;
+	public void setPelicula(String pelicula) {
+		this.peliculaid = pelicula;
 	}
 
 	/**
@@ -80,44 +65,10 @@ public class CompanyPelicula implements Serializable {
 	 * 
 	 * @return Pelicula
 	 */
-	public Pelicula getPelicula() {
-		return this.pelicula;
+	public String getPelicula() {
+		return this.peliculaid;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((companyPeliculaId == null) ? 0 : companyPeliculaId.hashCode());
-		return result;
-	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		CompanyPelicula other = (CompanyPelicula) obj;
-		if (companyPeliculaId == null) {
-			if (other.companyPeliculaId != null) {
-				return false;
-			}
-		} else if (!companyPeliculaId.equals(other.companyPeliculaId)) {
-			return false;
-		}
-		return true;
-	}
 
 }

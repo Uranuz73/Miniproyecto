@@ -1,7 +1,5 @@
 package models;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -16,19 +14,12 @@ public class Actor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/** idactor. */
-	private String idactor;
+	public String idactor;
 
 	/** name. */
-	private String name;
+	public  String name;
 
-	/** bio. */
-	private String bio;
-
-	/** born. */
-	private Date born;
-
-	/** country. */
-	private String country;
+	public String image; 
 
 	/** The set of Actor_film. */
 	private Set<ActorFilm> actorFilmSet;
@@ -36,8 +27,15 @@ public class Actor implements Serializable {
 	/**
 	 * Constructor.
 	 */
-	public Actor() {
-		this.actorFilmSet = new HashSet<ActorFilm>();
+	public Actor(String idactor,String name, String image) {
+		this.idactor = idactor;
+		this.name = name;
+		this.image = image;
+	}
+
+	@Override
+	public String toString() {
+		return "Actor [idactor=" + idactor + ", name=" + name + ", image=" + image + "]";
 	}
 
 	/**
@@ -78,61 +76,14 @@ public class Actor implements Serializable {
 		return this.name;
 	}
 
-	/**
-	 * Set the bio.
-	 * 
-	 * @param bio
-	 *            bio
-	 */
-	public void setBio(String bio) {
-		this.bio = bio;
+
+
+	public String getImage() {
+		return image;
 	}
 
-	/**
-	 * Get the bio.
-	 * 
-	 * @return bio
-	 */
-	public String getBio() {
-		return this.bio;
-	}
-
-	/**
-	 * Set the born.
-	 * 
-	 * @param born
-	 *            born
-	 */
-	public void setBorn(Date born) {
-		this.born = born;
-	}
-
-	/**
-	 * Get the born.
-	 * 
-	 * @return born
-	 */
-	public Date getBorn() {
-		return this.born;
-	}
-
-	/**
-	 * Set the country.
-	 * 
-	 * @param country
-	 *            country
-	 */
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	/**
-	 * Get the country.
-	 * 
-	 * @return country
-	 */
-	public String getCountry() {
-		return this.country;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	/**

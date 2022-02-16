@@ -16,21 +16,24 @@ public class ActorFilm implements Serializable {
 	private ActorFilmId actorFilmId;
 
 	/** Pelicula. */
-	private Pelicula pelicula;
+	public String peliculaid;
 
 	/** Actor. */
-	private Actor actor;
+	public String actorid;
 
 	/** actor_name. */
-	private String actorName;
+	public String character;
 
-	/** film_name. */
-	private String filmName;
+
 
 	/**
 	 * Constructor.
 	 */
-	public ActorFilm() {
+	public ActorFilm(String actorid,String peliculaid,String character) {
+	this.peliculaid = peliculaid;
+	this.actorid = actorid;
+	this.character = character;
+	
 	}
 
 	/**
@@ -58,8 +61,8 @@ public class ActorFilm implements Serializable {
 	 * @param pelicula
 	 *            Pelicula
 	 */
-	public void setPelicula(Pelicula pelicula) {
-		this.pelicula = pelicula;
+	public void setPelicula(String pelicula) {
+		this.peliculaid = pelicula;
 	}
 
 	/**
@@ -67,8 +70,8 @@ public class ActorFilm implements Serializable {
 	 * 
 	 * @return Pelicula
 	 */
-	public Pelicula getPelicula() {
-		return this.pelicula;
+	public String getPelicula() {
+		return this.peliculaid;
 	}
 
 	/**
@@ -77,8 +80,8 @@ public class ActorFilm implements Serializable {
 	 * @param actor
 	 *            Actor
 	 */
-	public void setActor(Actor actor) {
-		this.actor = actor;
+	public void setActor(String actor) {
+		this.actorid = actor;
 	}
 
 	/**
@@ -86,46 +89,17 @@ public class ActorFilm implements Serializable {
 	 * 
 	 * @return Actor
 	 */
-	public Actor getActor() {
-		return this.actor;
+	public String getActor() {
+		return this.actorid;
 	}
 
-	/**
-	 * Set the actor_name.
-	 * 
-	 * @param actorName
-	 *            actor_name
-	 */
-	public void setActorName(String actorName) {
-		this.actorName = actorName;
-	}
 
-	/**
-	 * Get the actor_name.
-	 * 
-	 * @return actor_name
-	 */
-	public String getActorName() {
-		return this.actorName;
-	}
 
-	/**
-	 * Set the film_name.
-	 * 
-	 * @param filmName
-	 *            film_name
-	 */
-	public void setFilmName(String filmName) {
-		this.filmName = filmName;
-	}
+	
 
-	/**
-	 * Get the film_name.
-	 * 
-	 * @return film_name
-	 */
-	public String getFilmName() {
-		return this.filmName;
+	@Override
+	public String toString() {
+		return "ActorFilm [peliculaid=" + peliculaid + ", actorid=" + actorid + ", character=" + character + "]";
 	}
 
 	/**

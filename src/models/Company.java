@@ -1,7 +1,5 @@
 package models;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -16,13 +14,17 @@ public class Company implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/** idcompany. */
-	private String idcompany;
+	public String idcompany;
+
+	@Override
+	public String toString() {
+		return "Company [idcompany=" + idcompany + ", name=" + name + "]";
+	}
 
 	/** name. */
-	private String name;
+	public String name;
 
-	/** creation_date. */
-	private Date creationDate;
+
 
 	/** The set of company_pelicula. */
 	private Set<CompanyPelicula> companyPeliculaSet;
@@ -31,7 +33,13 @@ public class Company implements Serializable {
 	 * Constructor.
 	 */
 	public Company() {
-		this.companyPeliculaSet = new HashSet<CompanyPelicula>();
+		
+	}
+	
+	public Company(String id,String name) {
+		this.idcompany = id;
+		this.name = name;
+		
 	}
 
 	/**
@@ -72,24 +80,6 @@ public class Company implements Serializable {
 		return this.name;
 	}
 
-	/**
-	 * Set the creation_date.
-	 * 
-	 * @param creationDate
-	 *            creation_date
-	 */
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	/**
-	 * Get the creation_date.
-	 * 
-	 * @return creation_date
-	 */
-	public Date getCreationDate() {
-		return this.creationDate;
-	}
 
 	/**
 	 * Set the set of the company_pelicula.
