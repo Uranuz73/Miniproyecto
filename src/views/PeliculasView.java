@@ -23,6 +23,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import DAO.DAO;
+import models.Pelicula;
+
 import javax.swing.SwingConstants;
 
 public class PeliculasView {
@@ -60,15 +62,6 @@ public class PeliculasView {
 		frame.setBounds(0,0,1920,1080);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ImageIcon img1 = descargar(PeliculasTabla.get(pagina+1));
-		ImageIcon img2 = descargar(PeliculasTabla.get(pagina+4));
-		ImageIcon img3 = descargar(PeliculasTabla.get(pagina+7));
-		ImageIcon img4 = descargar(PeliculasTabla.get(pagina+10));
-		ImageIcon img5 = descargar(PeliculasTabla.get(pagina+13));
-		ImageIcon img6 = descargar(PeliculasTabla.get(pagina+16));
-		ImageIcon img7 = descargar(PeliculasTabla.get(pagina+19));
-		ImageIcon img8 = descargar(PeliculasTabla.get(pagina+22));
-		ImageIcon img9 = descargar(PeliculasTabla.get(pagina+25));
 		ImageIcon image = new ImageIcon(PeliculasView.class.getResource("/images/cinefondobuena.jpg"));
 		ImageIcon imgSearch = new ImageIcon(PeliculasView.class.getResource("/images/search.jpg"));
 		
@@ -80,6 +73,16 @@ public class PeliculasView {
 		
 		JButton btnNext = new JButton("Next >");
 		
+		
+		if(pagina+26 >= PeliculasTabla.size()) {
+			btnNext.setEnabled(false);
+			btnNext.setVisible(false);
+		}else {
+			btnNext.setEnabled(true);
+			btnNext.setVisible(true);
+
+
+		}
 
 		btnNext.addMouseListener(new MouseAdapter() {
 			@Override
@@ -90,13 +93,28 @@ public class PeliculasView {
 				pagina+=27;
 				new PeliculasView(pagina);
 				
-				
+
 				
 				
 				
 				
 			}
 		});
+		
+		JButton btnNewButton = new JButton("Mas detalles");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				String idpeli = PeliculasTabla.get(pagina);
+				Pelicula peli = DAO.getPeliculaTocho(idpeli);
+				new DatosView(peli);
+				frame.setVisible(false);
+				
+			}
+		});
+		btnNewButton.setBounds(443, 262, 122, 23);
+		frame.getContentPane().add(btnNewButton);
 		btnNext.setBounds(969, 966, 122, 23);
 		frame.getContentPane().add(btnNext);
 		
@@ -111,6 +129,7 @@ public class PeliculasView {
 
 
 		}
+		
 		btnPrev.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -126,25 +145,38 @@ public class PeliculasView {
 		btnPrev.setBounds(802, 966, 122, 23);
 		frame.getContentPane().add(btnPrev);
 		
-		JPanel panel1 = new JPanel();
-		panel1.setBounds(173, 44, 450, 260);
-		panel1.setBackground(transparent);
-		frame.getContentPane().add(panel1);
-		panel1.setLayout(null);
 		
-		JLabel lblPeli1 = new JLabel("");
-		lblPeli1.setBounds(10, 11, 178, 238);
-		Icon icono1 = new ImageIcon(img1.getImage().getScaledInstance(lblPeli1.getWidth(), lblPeli1.getHeight(), Image.SCALE_DEFAULT));
-		lblPeli1.setIcon(icono1);
-		lblPeli1.repaint();
-		panel1.add(lblPeli1);
+		if(PeliculasTabla.size() > pagina + 2) {
+			
+			ImageIcon img1 = descargar(PeliculasTabla.get(pagina+1));
+
+			JPanel panel1 = new JPanel();
+			panel1.setBounds(173, 44, 450, 260);
+			panel1.setBackground(transparent);
+			frame.getContentPane().add(panel1);
+			panel1.setLayout(null);
+			
+			JLabel lblPeli1 = new JLabel("");
+			lblPeli1.setBounds(10, 11, 178, 238);
+			Icon icono1 = new ImageIcon(img1.getImage().getScaledInstance(lblPeli1.getWidth(), lblPeli1.getHeight(), Image.SCALE_DEFAULT));
+			lblPeli1.setIcon(icono1);
+			lblPeli1.repaint();
+			panel1.add(lblPeli1);
+			
+			JLabel lblname1 = new JLabel(PeliculasTabla.get(pagina+2));
+			lblname1.setHorizontalAlignment(SwingConstants.CENTER);
+			lblname1.setForeground(Color.WHITE);
+			lblname1.setBounds(198, 30, 242, 14);
+			panel1.add(lblname1);
+			System.out.println(pagina);
+			
+		}
 		
-		JLabel lblname1 = new JLabel(PeliculasTabla.get(pagina+2));
-		lblname1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblname1.setForeground(Color.WHITE);
-		lblname1.setBounds(198, 30, 242, 14);
-		panel1.add(lblname1);
-		
+		if(PeliculasTabla.size() > pagina + 5) {
+
+		ImageIcon img2 = descargar(PeliculasTabla.get(pagina+4));
+
+			
 		JPanel panel2 = new JPanel();
 		panel2.setBounds(173, 347, 450, 260);
 		panel2.setBackground(transparent);
@@ -164,6 +196,15 @@ public class PeliculasView {
 		panel2.add(lblname2);
 		lblPeli2.repaint();
 		
+		System.out.println(pagina+1);
+		
+		}
+		
+		if(PeliculasTabla.size() > pagina + 8) {
+		
+			ImageIcon img3 = descargar(PeliculasTabla.get(pagina+7));
+
+			
 		JPanel panel3 = new JPanel();
 		panel3.setBounds(173, 645, 450, 260);
 		panel3.setBackground(transparent);
@@ -182,6 +223,16 @@ public class PeliculasView {
 		lblname3.setBounds(198, 42, 242, 14);
 		panel3.add(lblname3);
 		lblPeli3.repaint();
+		
+		
+		System.out.println(pagina+2);
+
+		
+		}
+		if(PeliculasTabla.size() > pagina + 11) {
+			
+			ImageIcon img4 = descargar(PeliculasTabla.get(pagina+10));
+
 		
 		JPanel panel4 = new JPanel();
 		panel4.setBounds(723, 44, 450, 260);
@@ -202,6 +253,15 @@ public class PeliculasView {
 		panel4.add(lblname4);
 		lblPeli4.repaint();
 		
+		
+		System.out.println(pagina+3);
+
+		}
+		if(PeliculasTabla.size() > pagina + 14) {
+			
+			ImageIcon img5 = descargar(PeliculasTabla.get(pagina+13));
+
+		
 		JPanel panel5 = new JPanel();
 		panel5.setBounds(723, 347, 450, 260);
 		panel5.setBackground(transparent);
@@ -220,6 +280,16 @@ public class PeliculasView {
 		lblname5.setBounds(198, 46, 242, 14);
 		panel5.add(lblname5);
 		lblPeli5.repaint();
+		
+		
+		System.out.println(pagina+4);
+
+		
+		}
+		if(PeliculasTabla.size() > pagina + 17) {
+			
+			ImageIcon img6 = descargar(PeliculasTabla.get(pagina+16));
+
 		
 		JPanel panel6 = new JPanel();
 		panel6.setBounds(723, 645, 450, 260);
@@ -240,6 +310,16 @@ public class PeliculasView {
 		panel6.add(lblname6);
 		lblPeli6.repaint();
 		
+		
+		System.out.println(pagina+5);
+
+		
+		}
+		if(PeliculasTabla.size() > pagina + 20) {
+		
+			ImageIcon img7 = descargar(PeliculasTabla.get(pagina+19));
+
+			
 		JPanel panel7 = new JPanel();
 		panel7.setBackground(transparent);
 		panel7.setBounds(1269, 44, 450, 260);
@@ -257,6 +337,15 @@ public class PeliculasView {
 		panel7.add(lblPeli7);
 		Icon icono7  = new ImageIcon(img7.getImage().getScaledInstance(lblPeli7.getWidth(), lblPeli7.getHeight(), Image.SCALE_DEFAULT));
 		lblPeli7.setIcon(icono7);
+		
+		
+		System.out.println(pagina+6);
+
+		}
+		if(PeliculasTabla.size() > pagina + 23) {
+			
+			ImageIcon img8 = descargar(PeliculasTabla.get(pagina+22));
+
 		
 		JPanel panel8 = new JPanel();
 		panel8.setBackground(transparent);
@@ -276,6 +365,15 @@ public class PeliculasView {
 		Icon icono8 = new ImageIcon(img8.getImage().getScaledInstance(lblPeli8.getWidth(), lblPeli8.getHeight(), Image.SCALE_DEFAULT));
 		lblPeli8.setIcon(icono8);
 		
+		
+		System.out.println(pagina+7);
+
+		}
+		if(PeliculasTabla.size() > pagina + 26) {
+		
+			ImageIcon img9 = descargar(PeliculasTabla.get(pagina+25));
+
+			
 		JPanel panel9 = new JPanel();
 		panel9.setBackground(transparent);
 		panel9.setBounds(1269, 645, 450, 260);
@@ -293,6 +391,11 @@ public class PeliculasView {
 		panel9.add(lblPeli9);
 		Icon icono9 = new ImageIcon(img9.getImage().getScaledInstance(lblPeli9.getWidth(), lblPeli9.getHeight(), Image.SCALE_DEFAULT));
 		lblPeli9.setIcon(icono9);
+		
+		System.out.println(pagina+8);
+
+		
+		}
 		
 
 		

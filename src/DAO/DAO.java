@@ -68,18 +68,46 @@ public class DAO extends AbstractDAO {
 	}
 	
 	
-	public boolean getPeliculaTocho(String id) {
+	public static Pelicula getPeliculaTocho(String id) {
+		Pelicula peli = null;
 		try {
 			Statement stmt = conn.createStatement();
-			String sql = "SELECT * FROM pelicula;";
+			String sql = "SELECT * FROM pelicula where id = '" + id + "';";
 			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				String idp = rs.getString(1);
+				String titlep = rs.getString(2);
+				int year = rs.getInt(3);
+				int duration = rs.getInt(4);
+				
+				
+				String desc = rs.getString(5);
+				String poster = rs.getString(6);
+				
+				double valoration = rs.getDouble(7);
+				
+				String director = rs.getString(8);
+				String full = rs.getString(9);
+				String image = rs.getString(10	);
+				String type = rs.getString(11);
+				String release = rs.getString(11);
+				
+				
+				
+				
+				
+				
+				Pelicula p = new Pelicula(idp, titlep, year, duration, desc , poster, valoration, director, full, image, type, release) ;
+				peli = p;
+			}
 
-			return rs.next();
+			
+
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 		}
 		
-		return false;
+		return peli;
 	}
 	
 	
@@ -123,6 +151,7 @@ public class DAO extends AbstractDAO {
 		      stmt.setString (8,pelicula.director);
 		      stmt.setString (9,pelicula.fullTitle);
 		      stmt.setString (10, pelicula.image);
+		      
 		      stmt.setString (11, pelicula.type);
 		      stmt.setString (12, pelicula.releaseDate);
 		      
