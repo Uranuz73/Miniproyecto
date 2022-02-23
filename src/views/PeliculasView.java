@@ -6,7 +6,6 @@ import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -72,35 +71,7 @@ public class PeliculasView {
 		
 		
 		
-		JButton btnNext = new JButton("Next >");
-		
-		
-		if(pagina+26 >= PeliculasTabla.size()) {
-			btnNext.setEnabled(false);
-			btnNext.setVisible(false);
-		}else {
-			btnNext.setEnabled(true);
-			btnNext.setVisible(true);
 
-
-		}
-
-		btnNext.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-					
-				frame.setVisible(false);
-				pagina+=27;
-				new PeliculasView(pagina);
-				
-
-				
-				
-				
-				
-			}
-		});
 		
 		JButton btnDetalles1 = new JButton("Mas detalles");
 		btnDetalles1.addMouseListener(new MouseAdapter() {
@@ -220,6 +191,34 @@ public class PeliculasView {
 		frame.getContentPane().add(btnDetalles2);
 		btnDetalles1.setBounds(443, 262, 122, 23);
 		frame.getContentPane().add(btnDetalles1);
+		
+		
+		
+		JButton btnNext = new JButton("Next >");
+		
+		
+		if(pagina+26 >= PeliculasTabla.size()) {
+			btnNext.setEnabled(false);
+			btnNext.setVisible(false);
+		}else {
+			btnNext.setEnabled(true);
+			btnNext.setVisible(true);
+
+
+		}
+
+		btnNext.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+					
+				frame.setVisible(false);
+				pagina+=27;
+				new PeliculasView(pagina);
+				
+		
+			}
+		});
 		btnNext.setBounds(969, 966, 122, 23);
 		frame.getContentPane().add(btnNext);
 		
@@ -532,7 +531,7 @@ public class PeliculasView {
 
 
 							frame.setVisible(false);
-							new SearchView(name);
+							new SearchView(name,0);
 						}
 					});
 					panel.setLayout(null);

@@ -1,6 +1,5 @@
 package main;
 
-import models.Pelicula;
 import views.*;
 
 public class MainApp {

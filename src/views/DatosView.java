@@ -1,7 +1,6 @@
 package views;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Image;
 
 import javax.swing.Icon;
@@ -105,18 +104,52 @@ public class DatosView {
 		
 		JLabel lblIcono = new JLabel("");
 		ImageIcon img = descargar(peli.getImage());
-		lblIcono.setBounds(45, 47, 220, 324);
+		lblIcono.setBounds(45, 51, 220, 324);
 		Icon icono = new ImageIcon(img.getImage().getScaledInstance(lblIcono.getWidth(), lblIcono.getHeight(), Image.SCALE_DEFAULT));
 		lblIcono.setIcon(icono);
 		panel_1.add(lblIcono);
 		
-		JLabel lblDescripcion = new JLabel("");
+		JLabel lblDescripcion = new JLabel("<html>" + peli.getDescription());
 		lblDescripcion.setHorizontalAlignment(SwingConstants.LEFT);
 		lblDescripcion.setForeground(Color.WHITE);
 		lblDescripcion.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblDescripcion.setBounds(491, 135, 1113, 240);
-		lblDescripcion.setText("<html>" + peli.getDescription());
 		panel_1.add(lblDescripcion);
+		
+		JLabel lblRating = new JLabel("Rating: " +String.valueOf(peli.valoration) + " / 10");
+		lblRating.setHorizontalAlignment(SwingConstants.LEFT);
+		lblRating.setForeground(Color.WHITE);
+		lblRating.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblRating.setBounds(45, 418, 660, 59);
+		panel_1.add(lblRating);
+		
+		JLabel lblDirector = new JLabel("Director: " + peli.director);
+		lblDirector.setHorizontalAlignment(SwingConstants.LEFT);
+		lblDirector.setForeground(Color.WHITE);
+		lblDirector.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblDirector.setBounds(45, 494, 660, 59);
+		panel_1.add(lblDirector);
+		
+		JLabel lblDuracion = new JLabel("Duration: " +String.valueOf(peli.duration) + " mins.");
+		lblDuracion.setHorizontalAlignment(SwingConstants.LEFT);
+		lblDuracion.setForeground(Color.WHITE);
+		lblDuracion.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblDuracion.setBounds(45, 564, 660, 59);
+		panel_1.add(lblDuracion);
+		
+		JLabel lblDate = new JLabel("Release Date: " +peli.releaseDate);
+		lblDate.setHorizontalAlignment(SwingConstants.LEFT);
+		lblDate.setForeground(Color.WHITE);
+		lblDate.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblDate.setBounds(45, 646, 660, 59);
+		panel_1.add(lblDate);
+		
+		JLabel lblType = new JLabel("Type: " +peli.type);
+		lblType.setHorizontalAlignment(SwingConstants.LEFT);
+		lblType.setForeground(Color.WHITE);
+		lblType.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblType.setBounds(45, 709, 660, 59);
+		panel_1.add(lblType);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setBounds(10, 0, frame.getWidth(), frame.getHeight());

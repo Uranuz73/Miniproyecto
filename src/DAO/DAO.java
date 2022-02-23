@@ -88,9 +88,9 @@ public class DAO extends AbstractDAO {
 				
 				String director = rs.getString(8);
 				String full = rs.getString(9);
-				String image = rs.getString(10	);
+				String image = rs.getString(10);
 				String type = rs.getString(11);
-				String release = rs.getString(11);
+				String release = rs.getString(12);
 				
 				
 				
