@@ -64,6 +64,7 @@ public class PeliculasView {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ImageIcon image = new ImageIcon(PeliculasView.class.getResource("/images/cinefondobuena.jpg"));
 		ImageIcon imgSearch = new ImageIcon(PeliculasView.class.getResource("/images/search.jpg"));
+		ImageIcon imgLogout = new ImageIcon(PeliculasView.class.getResource("/images/logout.jpg"));
 		
 		Color transparent = new Color(30, 30, 30, 250);
 		frame.getContentPane().setLayout(null);
@@ -101,8 +102,8 @@ public class PeliculasView {
 			}
 		});
 		
-		JButton btnNewButton = new JButton("Mas detalles");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JButton btnDetalles1 = new JButton("Mas detalles");
+		btnDetalles1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
@@ -113,8 +114,112 @@ public class PeliculasView {
 				
 			}
 		});
-		btnNewButton.setBounds(443, 262, 122, 23);
-		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnDetalles9 = new JButton("Mas detalles");
+		btnDetalles9.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String idpeli = PeliculasTabla.get(pagina+24);
+				Pelicula peli = DAO.getPeliculaTocho(idpeli);
+				new DatosView(peli);
+				frame.setVisible(false);
+			}
+		});
+		btnDetalles9.setBounds(1520, 856, 122, 23);
+		frame.getContentPane().add(btnDetalles9);
+		
+		JButton btnDetalles8 = new JButton("Mas detalles");
+		btnDetalles8.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String idpeli = PeliculasTabla.get(pagina+21);
+				Pelicula peli = DAO.getPeliculaTocho(idpeli);
+				new DatosView(peli);
+				frame.setVisible(false);
+			}
+		});
+		btnDetalles8.setBounds(1520, 555, 122, 23);
+		frame.getContentPane().add(btnDetalles8);
+		
+		JButton btnDetalles7 = new JButton("Mas detalles");
+		btnDetalles7.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String idpeli = PeliculasTabla.get(pagina+18);
+				Pelicula peli = DAO.getPeliculaTocho(idpeli);
+				new DatosView(peli);
+				frame.setVisible(false);
+			}
+		});
+		btnDetalles7.setBounds(1520, 262, 122, 23);
+		frame.getContentPane().add(btnDetalles7);
+		
+		JButton btnDetalles6 = new JButton("Mas detalles");
+		btnDetalles6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String idpeli = PeliculasTabla.get(pagina+15);
+				Pelicula peli = DAO.getPeliculaTocho(idpeli);
+				new DatosView(peli);
+				frame.setVisible(false);
+			}
+		});
+		btnDetalles6.setBounds(969, 856, 122, 23);
+		frame.getContentPane().add(btnDetalles6);
+		
+		JButton btnDetalles5 = new JButton("Mas detalles");
+		btnDetalles5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String idpeli = PeliculasTabla.get(pagina+12);
+				Pelicula peli = DAO.getPeliculaTocho(idpeli);
+				new DatosView(peli);
+				frame.setVisible(false);
+			}
+		});
+		btnDetalles5.setBounds(969, 555, 122, 23);
+		frame.getContentPane().add(btnDetalles5);
+		
+		JButton btnDetalles4 = new JButton("Mas detalles");
+		btnDetalles4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String idpeli = PeliculasTabla.get(pagina+9);
+				Pelicula peli = DAO.getPeliculaTocho(idpeli);
+				new DatosView(peli);
+				frame.setVisible(false);
+			}
+		});
+		btnDetalles4.setBounds(969, 262, 122, 23);
+		frame.getContentPane().add(btnDetalles4);
+		
+		JButton btnDetalles3 = new JButton("Mas detalles");
+		btnDetalles3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String idpeli = PeliculasTabla.get(pagina+6);
+				Pelicula peli = DAO.getPeliculaTocho(idpeli);
+				new DatosView(peli);
+				frame.setVisible(false);
+			}
+		});
+		btnDetalles3.setBounds(443, 856, 122, 23);
+		frame.getContentPane().add(btnDetalles3);
+		
+		JButton btnDetalles2 = new JButton("Mas detalles");
+		btnDetalles2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String idpeli = PeliculasTabla.get(pagina+3);
+				Pelicula peli = DAO.getPeliculaTocho(idpeli);
+				new DatosView(peli);
+				frame.setVisible(false);
+			}
+		});
+		btnDetalles2.setBounds(443, 555, 122, 23);
+		frame.getContentPane().add(btnDetalles2);
+		btnDetalles1.setBounds(443, 262, 122, 23);
+		frame.getContentPane().add(btnDetalles1);
 		btnNext.setBounds(969, 966, 122, 23);
 		frame.getContentPane().add(btnNext);
 		
@@ -168,7 +273,6 @@ public class PeliculasView {
 			lblname1.setForeground(Color.WHITE);
 			lblname1.setBounds(198, 30, 242, 14);
 			panel1.add(lblname1);
-			System.out.println(pagina);
 			
 		}
 		
@@ -196,7 +300,6 @@ public class PeliculasView {
 		panel2.add(lblname2);
 		lblPeli2.repaint();
 		
-		System.out.println(pagina+1);
 		
 		}
 		
@@ -225,7 +328,6 @@ public class PeliculasView {
 		lblPeli3.repaint();
 		
 		
-		System.out.println(pagina+2);
 
 		
 		}
@@ -254,7 +356,6 @@ public class PeliculasView {
 		lblPeli4.repaint();
 		
 		
-		System.out.println(pagina+3);
 
 		}
 		if(PeliculasTabla.size() > pagina + 14) {
@@ -282,7 +383,6 @@ public class PeliculasView {
 		lblPeli5.repaint();
 		
 		
-		System.out.println(pagina+4);
 
 		
 		}
@@ -311,7 +411,6 @@ public class PeliculasView {
 		lblPeli6.repaint();
 		
 		
-		System.out.println(pagina+5);
 
 		
 		}
@@ -339,7 +438,6 @@ public class PeliculasView {
 		lblPeli7.setIcon(icono7);
 		
 		
-		System.out.println(pagina+6);
 
 		}
 		if(PeliculasTabla.size() > pagina + 23) {
@@ -366,7 +464,6 @@ public class PeliculasView {
 		lblPeli8.setIcon(icono8);
 		
 		
-		System.out.println(pagina+7);
 
 		}
 		if(PeliculasTabla.size() > pagina + 26) {
@@ -392,7 +489,6 @@ public class PeliculasView {
 		Icon icono9 = new ImageIcon(img9.getImage().getScaledInstance(lblPeli9.getWidth(), lblPeli9.getHeight(), Image.SCALE_DEFAULT));
 		lblPeli9.setIcon(icono9);
 		
-		System.out.println(pagina+8);
 
 		
 		}
@@ -406,8 +502,11 @@ public class PeliculasView {
 		panel.setBackground(transparent);
 		frame.getContentPane().add(panel);
 		
-		btnlog_out = new JButton("Logout");
-		btnlog_out.setBounds(0, 925, 105, 65);
+		btnlog_out = new JButton("");
+		btnlog_out.setBounds(23, 937, 56, 56);
+		btnlog_out.setForeground(Color.WHITE);
+		Icon imglogout = new ImageIcon(imgLogout.getImage().getScaledInstance( 56, 56,  java.awt.Image.SCALE_SMOOTH )) ;  
+		btnlog_out.setIcon(imglogout);
 		
 				btnlog_out.addMouseListener(new MouseAdapter() {
 					@Override
@@ -417,11 +516,13 @@ public class PeliculasView {
 					}
 				});
 				
+				
+				
 				btnSerach = new JButton("");
-				btnSerach.setBounds(24, 50, 53, 51);
+				btnSerach.setBounds(23, 22, 56, 56);
 				btnSerach.setForeground(Color.WHITE);
-				//Image newimg = imgSearch.getScaledInstance( 100, 100,  java.awt.Image.SCALE_SMOOTH ) ;  
-				btnSerach.setIcon(new ImageIcon(PeliculasView.class.getResource("/images/search.jpg")));
+				Icon newimg = new ImageIcon(imgSearch.getImage().getScaledInstance( 56, 56,  java.awt.Image.SCALE_SMOOTH )) ;  
+				btnSerach.setIcon(newimg);
 				
 					btnSerach.addMouseListener(new MouseAdapter() {
 						@Override
@@ -438,9 +539,6 @@ public class PeliculasView {
 					panel.add(btnSerach);
 					panel.add(btnlog_out);
 					
-					JButton btnSerach_bar_1 = new JButton("Details");
-					btnSerach_bar_1.setBounds(0, 162, 105, 65);
-					panel.add(btnSerach_bar_1);
 					
 					
 					JLabel lblFondo = new JLabel("");
@@ -454,7 +552,7 @@ public class PeliculasView {
 	}
 	
 	
-	private ImageIcon descargar(String Url ) {
+	 ImageIcon descargar(String Url ) {
 		ImageIcon image=null;
 		try {
 			URL url  = new URL(Url);

@@ -2,10 +2,12 @@ package views;
 
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -37,12 +39,16 @@ public class SearchView {
 	private JButton btnlog_out;
 	private JSONArray results;
 	private JSONObject support;
-	private JTable table;
+	//private JTable table;
 	private JButton btnSerach_bar3;
 	private JSONObject add;
 	ArrayList<String> Resultados = new ArrayList<>();
 	ArrayList<Pelicula> lista = new ArrayList <>();
 	private JButton btnlog_out_1;
+	//private int pagina = 0;
+	Color transparent = new Color(30, 30, 30, 250);
+	private JPanel panel_1;
+
 
 
 	public SearchView(String name) {
@@ -56,9 +62,10 @@ public class SearchView {
 	
 	private void initialize() {
 		
+		ImageIcon image = new ImageIcon(PeliculasView.class.getResource("/images/cinefondobuena.jpg"));
 		
 		
-
+		
 		String[][] tabla = new String[results.length()][5];
 		for (int i = 0; i < tabla.length; i++) {
 
@@ -78,33 +85,34 @@ public class SearchView {
 
 		frame = new JFrame();
 		frame.setVisible(true);
-		frame.setBounds(100,100,1256,835);
+		frame.setBounds(0,0,1920,1080);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		table = new JTable();
-		table.setForeground(Color.WHITE);
-		table.setBackground(new Color(30, 30, 30, 200));
-		table.setModel(new DefaultTableModel(
-			tabla,
-			new String[] {
-				"Poster", "Titulo", "Year", "Add"
-			}
-		) {
-			Class[] columnTypes = new Class[] {
-				Object.class, String.class, Integer.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		table.getColumnModel().getColumn(0).setPreferredWidth(30);
-		table.getColumnModel().getColumn(0).setMinWidth(40);
-		table.getColumnModel().getColumn(1).setPreferredWidth(156);
-		table.getColumnModel().getColumn(2).setPreferredWidth(155);
-		table.getColumnModel().getColumn(3).setPreferredWidth(243);
-		table.setBounds(150, 46, 1031, 692);
-		frame.getContentPane().add(table);
+//		table = new JTable();
+//		table.setForeground(Color.WHITE);
+//		table.setBackground(new Color(30, 30, 30, 200));
+//		table.setModel(new DefaultTableModel(
+//			tabla,
+//			new String[] {
+//				"Poster", "Titulo", "Year", "Add"
+//			}
+//		) {
+//			Class[] columnTypes = new Class[] {
+//				Object.class, String.class, Integer.class, Object.class
+//			};
+//			public Class getColumnClass(int columnIndex) {
+//				return columnTypes[columnIndex];
+//			}
+//		});
+//		table.getColumnModel().getColumn(0).setPreferredWidth(30);
+//		table.getColumnModel().getColumn(0).setMinWidth(40);
+//		table.getColumnModel().getColumn(1).setPreferredWidth(156);
+//		table.getColumnModel().getColumn(2).setPreferredWidth(155);
+//		table.getColumnModel().getColumn(3).setPreferredWidth(243);
+//		table.setBounds(150, 46, 1031, 692);
+//		frame.getContentPane().add(table);
 
 		
 		JPanel panel = new JPanel();
@@ -331,9 +339,14 @@ public class SearchView {
 		});
 		
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(PeliculasView.class.getResource("/images/cinefondobuena.jpg")));
-		lblNewLabel.setBounds(0, 0, 1256, 796);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+		Icon icon = new ImageIcon(image.getImage().getScaledInstance(lblFondo.getWidth(), lblFondo.getHeight(), Image.SCALE_DEFAULT));
+		lblFondo.setIcon(icon);
+		frame.getContentPane().add(lblFondo);
+		
+		panel_1 = new JPanel();
+		panel_1.setBounds(173, 44, 450, 260);
+		frame.getContentPane().add(panel_1);
 	}
 }

@@ -15,6 +15,14 @@ import models.Pelicula;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class DatosView {
 
@@ -35,6 +43,9 @@ public class DatosView {
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ImageIcon image = new ImageIcon(PeliculasView.class.getResource("/images/cinefondobuena.jpg"));
+		ImageIcon imgSearch = new ImageIcon(PeliculasView.class.getResource("/images/search.jpg"));
+		ImageIcon imgLogout = new ImageIcon(PeliculasView.class.getResource("/images/logout.jpg"));
+		ImageIcon imgBack = new ImageIcon(PeliculasView.class.getResource("/images/back.jpg"));
 		
 		Color transparent = new Color(30, 30, 30, 250);
 		frame.getContentPane().setLayout(null);
@@ -44,19 +55,38 @@ public class DatosView {
 		panel.setBackground(transparent);
 		panel.setBounds(0, 0, 105, 1080);
 		frame.getContentPane().add(panel);
+		Icon newimg = new ImageIcon(imgSearch.getImage().getScaledInstance( 56, 56,  java.awt.Image.SCALE_SMOOTH )) ;  
 		
-		JButton btnSerach = new JButton("");
-		btnSerach.setForeground(Color.WHITE);
-		btnSerach.setBounds(24, 50, 53, 51);
-		panel.add(btnSerach);
+
 		
-		JButton btnlog_out = new JButton("Logout");
-		btnlog_out.setBounds(0, 925, 105, 65);
+		JButton btnlog_out = new JButton("");
+		btnlog_out.setBounds(23, 937, 56, 56);
+		btnlog_out.setForeground(Color.WHITE);
+		Icon imglogout = new ImageIcon(imgLogout.getImage().getScaledInstance( 56, 56,  java.awt.Image.SCALE_SMOOTH )) ;  
+		btnlog_out.setIcon(imglogout);
 		panel.add(btnlog_out);
 		
-		JButton btnSerach_bar_1 = new JButton("Details");
-		btnSerach_bar_1.setBounds(0, 162, 105, 65);
-		panel.add(btnSerach_bar_1);
+		JButton btnback = new JButton("Back");
+		btnback.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				new PeliculasView(0);
+				frame.setVisible(false);
+			}
+		});
+		btnback.setBounds(23, 853, 56, 56);
+		btnback.setForeground(Color.WHITE);
+		Icon iconback = new ImageIcon(imgBack.getImage().getScaledInstance( 56, 56,  java.awt.Image.SCALE_SMOOTH )) ;  
+		btnback.setIcon(iconback);
+		panel.add(btnback);
+		
+		JButton btnSearch = new JButton("");
+		btnSearch.setBounds(23, 34, 56, 56);
+		panel.add(btnSearch);
+		btnSearch.setForeground(Color.WHITE);
+		btnSearch.setIcon(newimg);
+		
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(138, 64, 1703, 889);
@@ -65,13 +95,28 @@ public class DatosView {
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setText(peli.getFullTitle());
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(49, 44, 1605, 52);
-		panel_1.add(lblNewLabel);
+		JLabel lblTitulo = new JLabel("");
+		lblTitulo.setText(peli.getFullTitle());
+		lblTitulo.setForeground(Color.WHITE);
+		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 30));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(406, 44, 1198, 52);
+		panel_1.add(lblTitulo);
+		
+		JLabel lblIcono = new JLabel("");
+		ImageIcon img = descargar(peli.getImage());
+		lblIcono.setBounds(45, 47, 220, 324);
+		Icon icono = new ImageIcon(img.getImage().getScaledInstance(lblIcono.getWidth(), lblIcono.getHeight(), Image.SCALE_DEFAULT));
+		lblIcono.setIcon(icono);
+		panel_1.add(lblIcono);
+		
+		JLabel lblDescripcion = new JLabel("");
+		lblDescripcion.setHorizontalAlignment(SwingConstants.LEFT);
+		lblDescripcion.setForeground(Color.WHITE);
+		lblDescripcion.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblDescripcion.setBounds(491, 135, 1113, 240);
+		lblDescripcion.setText("<html>" + peli.getDescription());
+		panel_1.add(lblDescripcion);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setBounds(10, 0, frame.getWidth(), frame.getHeight());
@@ -84,6 +129,45 @@ public class DatosView {
 		
 		
 		
+		
+	}
+	
+	public ImageIcon descargar(String Url ) {
+		ImageIcon image=null;
+		try {
+			URL url  = new URL(Url);
+			URLConnection urlcon;
+			try {
+				urlcon = url.openConnection();
+				
+				InputStream is = urlcon.getInputStream();
+				
+				ByteArrayOutputStream out = new ByteArrayOutputStream();
+				
+				byte[] buf = new byte[1024];
+				int n = 0;
+				while (-1!=(n=is.read(buf)))
+				{
+				   out.write(buf, 0, n);
+				}
+				
+				out.close();
+				is.close();
+				byte[] response = out.toByteArray();
+				
+				
+				 image = new ImageIcon(response);
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+
+		} catch (MalformedURLException e) {
+
+			e.printStackTrace();
+		}
+		
+		return image;
 		
 	}
 }
