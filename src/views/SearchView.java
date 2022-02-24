@@ -47,7 +47,7 @@ public class SearchView {
 	private JSONObject support;
 	private JButton btnSerach_bar3;
 	private JSONObject add;
-	//ArrayList<String> Resultados = new ArrayList<>();
+	ArrayList<String> Resultados = new ArrayList<>();
 	ArrayList<Pelicula> lista = new ArrayList <>();
 	private JButton btnlog_out_1;
 	private int pagina;
@@ -117,7 +117,7 @@ public class SearchView {
 				tabla[i][2] = support.getString("id");
 				
 				
-		//		Resultados.add(support.getString("id"));
+				Resultados.add(support.getString("id"));
 				
 				
 
@@ -599,167 +599,7 @@ frame.getContentPane().add(btnPrev);
 		
 		
 		
-//		btnSerach_bar3.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				ArrayList<String> companies = new ArrayList<String>();
-//				
-//				ArrayList<String> actors = new ArrayList<String>();
-//				ArrayList<String> characters = new ArrayList<String>();
-//				
-//				ArrayList<String> directors = new ArrayList<String>();
-//				
-//				ArrayList<String> genres = new ArrayList<String>();
-//				
-//				String idaux = JOptionPane.showInputDialog("Introduzca el índice de la pelicula a añadir");
-//				System.out.println(Resultados.get(Integer.parseInt(idaux)-1));
-//				
-//				
-//				
-//				 add =  API.Consulta2(Resultados.get(Integer.parseInt(idaux)-1));
-//				System.out.println(add);
-//				
-//				
-//				String id = add.getString("id");	
-//
-//				String title = add.getString("title");
-//
-//				 Integer year = add.getInt("year");
-//
-//				 Integer duration = add.getInt("runtimeMins");
-//
-//				 String description = add.getString("plot");
-//
-//				 String poster = add.getString("image");
-//
-//				 Double valoration = Double.parseDouble(add.getString("imDbRating"));
-//				 								
-//				 JSONArray dir = (JSONArray) add.get("directorList");
-//				 
-//				 JSONObject dire = dir.getJSONObject(0);
-//				 
-//				 String director =dire.getString("name");
-//				 
-//
-//				 String fullTitle = add.getString("fullTitle");
-//
-//				 String image = add.getString("image");
-//
-//				 String type = add.getString("type");
-//
-//				 String releaseDate = add.getString("releaseDate");
-//				
-//				 
-//					Pelicula a = new Pelicula(id,title,year,duration,description,poster,valoration,director,fullTitle,image,type,releaseDate);
-//					System.out.println(a);
-//
-//					DAO.insertpeliculas(a);
-//					
-//					JSONArray com = (JSONArray) add.get("companyList");
-//
-//					for (int i = 0; i < com.length(); i++) {
-//						
-//						JSONObject comp = com.getJSONObject(i);
-//						
-//						String id_company = comp.getString("id");
-//						companies.add(id_company);
-//						String name_company = comp.getString("name");
-//						
-//						Company c = new Company(id_company,name_company);
-//						System.out.println(c);
-//						DAO.insertCompany(c);
-//						
-//					}
-//					
-//					for (int i = 0; i < companies.size(); i++) {
-//						
-//						CompanyPelicula cp = new CompanyPelicula(companies.get(i),id);
-//						
-//						DAO.insertCP(cp);
-//						
-//					}
-//					
-//					JSONArray direc = (JSONArray) add.get("directorList");
-//					
-//					for (int i = 0; i < direc.length(); i++) {
-//						
-//						JSONObject direct = direc.getJSONObject(i);
-//						
-//						String id_director = direct.getString("id");
-//						directors.add(id_director);
-//						String director_name = direct.getString("name");
-//						
-//						Director d = new Director (id_director,director_name);
-//						System.out.println(d);
-//						DAO.insertDirector(d);
-//						
-//					}
-//					
-//					for (int i = 0; i < directors.size(); i++) {
-//						
-//						DirectorPelicula dp = new DirectorPelicula(directors.get(i),id);
-//						
-//						DAO.insertDP(dp);
-//						
-//					}
-//					
-//					JSONArray act = (JSONArray) add.get("actorList");
-//					
-//					
-//					for (int i = 0; i < act.length(); i++) {
-//						
-//						JSONObject actr = act.getJSONObject(i);
-//						
-//						String id_actor = actr.getString("id");
-//						actors.add(id_actor);
-//						String actor_name = actr.getString("name");
-//						String actor_image = actr.getString("image");
-//						characters.add(actr.getString("asCharacter"));
-//						
-//						Actor d = new Actor (id_actor,actor_name,actor_image);
-//						
-//						System.out.println(d);
-//						DAO.insertActor(d);
-//						
-//					}
-//					
-//					for (int i = 0; i < actors.size(); i++) {
-//						
-//						ActorFilm ap = new ActorFilm(actors.get(i),id,characters.get(i));
-//						
-//						DAO.insertAP(ap);
-//						
-//					}
-//					
-//					JSONArray genr = (JSONArray) add.get("genreList");
-//					
-//					
-//					for (int i = 0; i < genr.length(); i++) {
-//						
-//						JSONObject genre = genr.getJSONObject(i);
-//						
-//						String id_genre = genre.getString("key");
-//						genres.add(id_genre);
-//						String genre_name = genre.getString("value");
-//
-//						
-//						Genres g = new Genres (id_genre,genre_name);
-//						
-//						System.out.println(g);
-//						DAO.insertGenre(g);
-//						
-//					}
-//					
-//					for (int i = 0; i < genres.size(); i++) {
-//						
-//						GenreFilm ap = new GenreFilm(genres.get(i),id);
-//						
-//						DAO.insertGP(ap);
-//						
-//					}
-//			}
-//		});
-		
+	
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setBounds(0, 0, frame.getWidth(), frame.getHeight());
@@ -808,8 +648,164 @@ frame.getContentPane().add(btnPrev);
 	}
 	 
 	 private void add(String id) {
-		 //TODO add
-	 }
+		 
+		 
+		 ArrayList<String> companies = new ArrayList<String>();
+			
+			ArrayList<String> actors = new ArrayList<String>();
+			ArrayList<String> characters = new ArrayList<String>();
+			
+			ArrayList<String> directors = new ArrayList<String>();
+			
+			ArrayList<String> genres = new ArrayList<String>();
+			
+
+			
+			
+			
+			 add =  API.Consulta2(id);
+			System.out.println(add);
+			
+			
+			String idpelicula = add.getString("id");	
+
+			String title = add.getString("title");
+
+			 Integer year = add.getInt("year");
+
+			 Integer duration = add.getInt("runtimeMins");
+
+			 String description = add.getString("plot");
+
+			 String poster = add.getString("image");
+
+			 Double valoration = Double.parseDouble(add.getString("imDbRating"));
+			 								
+			 JSONArray dir = (JSONArray) add.get("directorList");
+			 
+			 JSONObject dire = dir.getJSONObject(0);
+			 
+			 String director =dire.getString("name");
+			 
+
+			 String fullTitle = add.getString("fullTitle");
+
+			 String image = add.getString("image");
+
+			 String type = add.getString("type");
+
+			 String releaseDate = add.getString("releaseDate");
+			
+			 
+				Pelicula a = new Pelicula(idpelicula,title,year,duration,description,poster,valoration,director,fullTitle,image,type,releaseDate);
+				System.out.println(a);
+
+				DAO.insertpeliculas(a);
+				
+				JSONArray com = (JSONArray) add.get("companyList");
+
+				for (int i = 0; i < com.length(); i++) {
+					
+					JSONObject comp = com.getJSONObject(i);
+					
+					String id_company = comp.getString("id");
+					companies.add(id_company);
+					String name_company = comp.getString("name");
+					
+					Company c = new Company(id_company,name_company);
+					System.out.println(c);
+					DAO.insertCompany(c);
+					
+				}
+				
+				for (int i = 0; i < companies.size(); i++) {
+					
+					CompanyPelicula cp = new CompanyPelicula(companies.get(i),id);
+					
+					DAO.insertCP(cp);
+					
+				}
+				
+				JSONArray direc = (JSONArray) add.get("directorList");
+				
+				for (int i = 0; i < direc.length(); i++) {
+					
+					JSONObject direct = direc.getJSONObject(i);
+					
+					String id_director = direct.getString("id");
+					directors.add(id_director);
+					String director_name = direct.getString("name");
+					
+					Director d = new Director (id_director,director_name);
+					System.out.println(d);
+					DAO.insertDirector(d);
+					
+				}
+				
+				for (int i = 0; i < directors.size(); i++) {
+					
+					DirectorPelicula dp = new DirectorPelicula(directors.get(i),id);
+					
+					DAO.insertDP(dp);
+					
+				}
+				
+				JSONArray act = (JSONArray) add.get("actorList");
+				
+				
+				for (int i = 0; i < act.length(); i++) {
+					
+					JSONObject actr = act.getJSONObject(i);
+					
+					String id_actor = actr.getString("id");
+					actors.add(id_actor);
+					String actor_name = actr.getString("name");
+					String actor_image = actr.getString("image");
+					characters.add(actr.getString("asCharacter"));
+					
+					Actor d = new Actor (id_actor,actor_name,actor_image);
+					
+					System.out.println(d);
+					DAO.insertActor(d);
+					
+				}
+				
+				for (int i = 0; i < actors.size(); i++) {
+					
+					ActorFilm ap = new ActorFilm(actors.get(i),id,characters.get(i));
+					
+					DAO.insertAP(ap);
+					
+				}
+				
+				JSONArray genr = (JSONArray) add.get("genreList");
+				
+				
+				for (int i = 0; i < genr.length(); i++) {
+					
+					JSONObject genre = genr.getJSONObject(i);
+					
+					String id_genre = genre.getString("key");
+					genres.add(id_genre);
+					String genre_name = genre.getString("value");
+
+					
+					Genres g = new Genres (id_genre,genre_name);
+					
+					System.out.println(g);
+					DAO.insertGenre(g);
+					
+				}
+				
+				for (int i = 0; i < genres.size(); i++) {
+					
+					GenreFilm ap = new GenreFilm(genres.get(i),id);
+					
+					DAO.insertGP(ap);
+					
+				}
+		}
+	 
 	 
 	 
 	 
