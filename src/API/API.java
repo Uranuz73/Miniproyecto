@@ -24,10 +24,11 @@ public class API {
 			request = HttpRequest.newBuilder(new URI("https://imdb-api.com/en/API/SearchMovie/k_hn279zy6/"+name))
 					.GET().build();		
 			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
+			
 		
 		JSONObject myJson = new JSONObject(response.body());
 
+		
 		return (JSONArray) myJson.get("results");
 			
 		} catch (URISyntaxException | IOException | InterruptedException e) {
@@ -64,6 +65,7 @@ public class API {
 		return null;
 		
 	}
+	
 	
 	
 	

@@ -36,7 +36,7 @@ public class PeliculasView {
 	private int pagina;
 
 	
-	public PeliculasView(int pagina) {
+	public PeliculasView(int paginaz) {
 		
 		this.pagina = pagina;
 		

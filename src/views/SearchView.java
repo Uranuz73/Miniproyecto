@@ -112,7 +112,17 @@ public class SearchView {
 
 				support = results.getJSONObject(i);
 				
-				tabla[i][0] = support.getString("image");
+				String asd = support.getString("image");
+				System.out.println(asd);
+				if(asd.contains("nopicture")==false) {
+					String [] sf = asd.split("._");
+				asd = sf[0] + "._" +sf[1]  + "1_Ratio0.6762_AL_.jpg";
+				}
+				
+			
+				System.out.println(asd+" resultado");
+				
+				tabla[i][0] = asd;
 				tabla[i][1] = support.getString("title");
 				tabla[i][2] = support.getString("id");
 				
@@ -677,7 +687,21 @@ frame.getContentPane().add(btnPrev);
 
 			 String description = add.getString("plot");
 
-			 String poster = add.getString("image");
+			 String pos = add.getString("image");
+			 String poster = pos;
+			 
+			 if(pos.contains("nopicture")==false) {
+				 String[] posg = pos.split("._");
+			 
+			  poster = posg[0] + "1_Ratio0.6762_AL_.jpg";
+			 }
+			 
+			 
+			 
+
+			 
+			 
+			 
 
 			 Double valoration = Double.parseDouble(add.getString("imDbRating"));
 			 								
