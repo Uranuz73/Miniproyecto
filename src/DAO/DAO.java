@@ -358,4 +358,38 @@ public class DAO extends AbstractDAO {
 		return true;
 	}
 	
+	
+	 public static ArrayList<ActorFilm> getActor (String id) {
+	        ArrayList<ActorFilm> listaactores = new ArrayList<>();
+	        
+	        try {
+	            Statement stmt = conn.createStatement();
+	            String sql = "SELECT actor.name, actor.idactor, Actor_film.character_film, actor.image "+
+	                      "FROM (pelicula join actor_film on pelicula.id = actor_film.id) join actor on actor_film.idactor = actor.idactor " +
+	                      "where pelicula.id  ='" + id + "';";
+	            
+	            System.out.println(sql);
+	            ResultSet rs = stmt.executeQuery(sql);
+	            while(rs.next()) {
+
+	                String actorname = rs.getString(1);
+	                String actorid = rs.getString(2);
+	                String actorcharacter = rs.getString(3);
+	                String imageActor = rs.getString(4); 
+	                
+	                
+	                ActorFilm actor = new ActorFilm(id, actorid , actorcharacter, imageActor, actorname);
+	                listaactores.add(actor);
+	                System.out.println(actor);
+	            }
+
+	            
+
+	        } catch (SQLException ex) {
+	            System.out.println(ex.getMessage());
+	        }
+	        
+	        return listaactores;
+	    }
+	
 }

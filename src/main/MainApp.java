@@ -1,5 +1,6 @@
 package main;
 
+import DAO.DAO;
 import views.*;
 
 public class MainApp {
@@ -8,6 +9,9 @@ public class MainApp {
         new LoginView();
     	//Pelicula p = new Pelicula("a", "a", 1, 1, "a", "a", 1.0, "a", "a", "a", "a", "q");
        //new DatosView(p);
+        
+        
+        DAO.getActor("tt2005151");
         
         
     }

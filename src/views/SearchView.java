@@ -796,7 +796,7 @@ frame.getContentPane().add(btnPrev);
 				
 				for (int i = 0; i < actors.size(); i++) {
 					
-					ActorFilm ap = new ActorFilm(actors.get(i),id,characters.get(i));
+					ActorFilm ap = new ActorFilm(actors.get(i),id,characters.get(i),"ª", "ª");
 					
 					DAO.insertAP(ap);
 					

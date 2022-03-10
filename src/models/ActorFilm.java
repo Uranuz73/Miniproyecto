@@ -24,17 +24,25 @@ public class ActorFilm implements Serializable {
 	/** actor_name. */
 	public String character;
 
+	/** image. */
+	public String image;
+	
+	/** name. */
+	public String name;
 
 
 	/**
 	 * Constructor.
 	 */
-	public ActorFilm(String actorid,String peliculaid,String character) {
-	this.peliculaid = peliculaid;
-	this.actorid = actorid;
-	this.character = character;
-	
-	}
+
+	public ActorFilm(String peliculaid,String actorid,String character,String image,String name) {
+	    this.peliculaid = peliculaid;
+	    this.actorid = actorid;
+	    this.character = character;
+	    this.image = image;
+	    this.name = name;
+	    } 
+
 
 	/**
 	 * Set the Composite-id of Actor_film.
@@ -53,6 +61,14 @@ public class ActorFilm implements Serializable {
 	 */
 	public ActorFilmId getActorFilmId() {
 		return this.actorFilmId;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	/**
@@ -97,10 +113,14 @@ public class ActorFilm implements Serializable {
 
 	
 
+
+
 	@Override
 	public String toString() {
-		return "ActorFilm [peliculaid=" + peliculaid + ", actorid=" + actorid + ", character=" + character + "]";
+		return "ActorFilm [actorFilmId=" + actorFilmId + ", peliculaid=" + peliculaid + ", actorid=" + actorid
+				+ ", character=" + character + ", image=" + image + ", name=" + name + "]";
 	}
+
 
 	/**
 	 * {@inheritDoc}
