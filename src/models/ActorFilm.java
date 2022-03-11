@@ -44,6 +44,26 @@ public class ActorFilm implements Serializable {
 	    } 
 
 
+	public String getCharacter() {
+		return character;
+	}
+
+
+	public void setCharacter(String character) {
+		this.character = character;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
 	/**
 	 * Set the Composite-id of Actor_film.
 	 * 

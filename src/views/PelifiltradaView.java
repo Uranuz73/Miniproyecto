@@ -26,7 +26,7 @@ import models.Pelicula;
 
 import javax.swing.SwingConstants;
 
-public class PeliculasView {
+public class PelifiltradaView {
 
 	private JFrame frame;
 	private JButton btnSerachAdd;
@@ -36,11 +36,11 @@ public class PeliculasView {
 	private int pagina;
 
 	
-	public PeliculasView(int pagina) {
+	public PelifiltradaView(int pagina, ArrayList<String> PeliculasTabla) {
 		
 		this.pagina = pagina;
 		
-		this.PeliculasTabla = DAO.getPelicula();
+		this.PeliculasTabla = PeliculasTabla;
 		
 		
 		initialize();
@@ -61,11 +61,13 @@ public class PeliculasView {
 		frame.setBounds(0,0,1920,1080);
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ImageIcon image = new ImageIcon(PeliculasView.class.getResource("/images/cinefondobuena.jpg"));
-		ImageIcon imgSearch = new ImageIcon(PeliculasView.class.getResource("/images/search.jpg"));
-		ImageIcon imgSearchAdd = new ImageIcon(PeliculasView.class.getResource("/images/busquedaanyadir.jpg"));
-		ImageIcon imgLogout = new ImageIcon(PeliculasView.class.getResource("/images/logout.jpg"));
-		ImageIcon imgNew = new ImageIcon(PeliculasView.class.getResource("/images/add.jpg"));
+		ImageIcon image = new ImageIcon(PelifiltradaView.class.getResource("/images/cinefondobuena.jpg"));
+		ImageIcon imgSearch = new ImageIcon(PelifiltradaView.class.getResource("/images/search.jpg"));
+		ImageIcon imgSearchAdd = new ImageIcon(PelifiltradaView.class.getResource("/images/busquedaanyadir.jpg"));
+		ImageIcon imgLogout = new ImageIcon(PelifiltradaView.class.getResource("/images/logout.jpg"));
+		ImageIcon imgNew = new ImageIcon(PelifiltradaView.class.getResource("/images/add.jpg"));
+		ImageIcon imgBack = new ImageIcon(PeliculasView.class.getResource("/images/back.jpg"));
+
 		
 		Color transparent = new Color(30, 30, 30, 250);
 		frame.getContentPane().setLayout(null);
@@ -216,7 +218,7 @@ public class PeliculasView {
 					
 				frame.setVisible(false);
 				pagina+=27;
-				new PeliculasView(pagina);
+				new PelifiltradaView(pagina, PeliculasTabla);
 				
 		
 			}
@@ -243,7 +245,7 @@ public class PeliculasView {
 				
 				frame.setVisible(false);
 				pagina-=27;
-				new PeliculasView(pagina);
+				new PelifiltradaView(pagina, PeliculasTabla);
 				
 				
 			}
@@ -503,6 +505,23 @@ public class PeliculasView {
 		panel.setBackground(transparent);
 		frame.getContentPane().add(panel);
 		
+		JButton btnback= new JButton("");
+		btnback.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				new PeliculasView(0);
+				frame.setVisible(false);
+			}
+		});
+
+		btnback.setBounds(22, 856, 56, 56);
+		btnback.setForeground(Color.WHITE);
+		Icon iconback = new ImageIcon(imgBack.getImage().getScaledInstance( 56, 56,  java.awt.Image.SCALE_SMOOTH )) ;  
+		btnback.setIcon(iconback);
+		panel.add(btnback);
+		panel.add(btnback);
+		
 		btnlog_out = new JButton("");
 		btnlog_out.setBounds(23, 937, 56, 56);
 		btnlog_out.setForeground(Color.WHITE);
@@ -547,10 +566,10 @@ public class PeliculasView {
 							
 							String name = JOptionPane.showInputDialog("Search by name");
 							
-							ArrayList<String> PeliculasTabla = DAO.filtrado(name);
+							DAO.filtrado(name);
 
 							frame.setVisible(false);
-							new PelifiltradaView(0,PeliculasTabla);
+							new SearchView(name,0);
 						}
 					});
 					btnSearch.setForeground(Color.WHITE);

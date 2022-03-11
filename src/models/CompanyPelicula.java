@@ -21,6 +21,26 @@ public class CompanyPelicula implements Serializable {
 	/** Pelicula. */
 	public String peliculaid;
 
+	public String getCompanyid() {
+		return companyid;
+	}
+
+
+	public void setCompanyid(String companyid) {
+		this.companyid = companyid;
+	}
+
+
+	public String getPeliculaid() {
+		return peliculaid;
+	}
+
+
+	public void setPeliculaid(String peliculaid) {
+		this.peliculaid = peliculaid;
+	}
+
+
 	/**
 	 * Constructor.
 	 */

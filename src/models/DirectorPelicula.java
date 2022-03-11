@@ -33,6 +33,34 @@ public class DirectorPelicula implements Serializable {
 	
 	
 
+	public String getPeliculaid() {
+		return peliculaid;
+	}
+
+
+
+
+	public void setPeliculaid(String peliculaid) {
+		this.peliculaid = peliculaid;
+	}
+
+
+
+
+	public String getDirectorid() {
+		return directorid;
+	}
+
+
+
+
+	public void setDirectorid(String directorid) {
+		this.directorid = directorid;
+	}
+
+
+
+
 	/**
 	 * Set the Composite-id of director_pelicula.
 	 * 

@@ -380,7 +380,6 @@ public class DAO extends AbstractDAO {
 	                
 	                ActorFilm actor = new ActorFilm(id, actorid , actorcharacter, imageActor, actorname);
 	                listaactores.add(actor);
-	                System.out.println(actor);
 	            }
 
 	            
@@ -391,5 +390,108 @@ public class DAO extends AbstractDAO {
 	        
 	        return listaactores;
 	    }
-	
+	 
+	 
+	 public static ArrayList<DirectorPelicula> getDirector (String id) {
+         ArrayList<DirectorPelicula> listadirectores = new ArrayList<>();
+         
+         try {
+             Statement stmt = conn.createStatement();
+                 //cambiar estos datos por los campos de las tablas
+             String sql = "SELECT director.name "+
+                       "FROM (pelicula join director_pelicula on pelicula.id = director_pelicula.id) join director on director_pelicula.iddirector = director.iddirector " +
+                       "where pelicula.id  ='" + id + "';";
+             
+             System.out.println(sql);
+             ResultSet rs = stmt.executeQuery(sql);
+             while(rs.next()) {
+             //los campos de la BD que da la query
+                 String iddirector = rs.getString(1); 
+                 
+                                         //campos y cambiar el constructor para que entren
+                 DirectorPelicula dire = new DirectorPelicula(iddirector,id );
+                 listadirectores.add(dire);
+                 System.out.println(dire);
+             }
+
+             
+
+         } catch (SQLException ex) {
+             System.out.println(ex.getMessage());
+         }
+         
+         return listadirectores;
+     }
+	 
+	 
+	 
+	 public static ArrayList<CompanyPelicula> getCompany (String id) {
+         ArrayList<CompanyPelicula> listacompany = new ArrayList<>();
+         
+         try {
+             Statement stmt = conn.createStatement();
+                 //cambiar estos datos por los campos de las tablas
+             String sql = "SELECT company.name "+
+                       "FROM (pelicula join company_pelicula on pelicula.id = company_pelicula.id) join company on company_pelicula.idcompany = company.idcompany " +
+                       "where pelicula.id  ='" + id + "';";
+             
+             System.out.println(sql);
+             ResultSet rs = stmt.executeQuery(sql);
+             while(rs.next()) {
+             //los campos de la BD que da la query
+                 String name = rs.getString(1);
+                 
+                                         //campos y cambiar el constructor para que entren
+                 CompanyPelicula comp = new CompanyPelicula(id, name);
+                 listacompany.add(comp);
+                 System.out.println(comp );
+             }
+
+             
+
+         } catch (SQLException ex) {
+             System.out.println(ex.getMessage());
+         }
+         
+         return listacompany;
+     }
+	 
+	 public static ArrayList<String> filtrado (String nombre) {
+         ArrayList<String> listapelicula = new ArrayList<>();
+         
+         try {
+             Statement stmt = conn.createStatement();
+                 //cambiar estos datos por los campos de las tablas
+             
+             //TODO 
+            String sql = "SELECT id,image,full_title FROM pelicula where title like '%" + nombre + "%';";
+
+             
+             System.out.println(sql);
+             ResultSet rs = stmt.executeQuery(sql);
+             while(rs.next()) {
+
+ 				String id = rs.getString(1);
+ 				String url = rs.getString(2);
+ 				String title = rs.getString(3);
+
+ 				listapelicula.add(id);
+ 				listapelicula.add(url);
+ 				listapelicula.add(title);
+                 
+                                         
+                
+                 
+                 	
+             }
+
+
+
+         } catch (SQLException ex) {
+             System.out.println(ex.getMessage());
+         }
+         
+         return listapelicula;
+
+	 }
 }

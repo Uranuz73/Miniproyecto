@@ -9,10 +9,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import models.ActorFilm;
+import models.CompanyPelicula;
+import models.DirectorPelicula;
 import models.Pelicula;
 
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+
+import com.mysql.cj.x.protobuf.MysqlxResultset.FetchSuspendedOrBuilder;
+
+import DAO.DAO;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -22,6 +30,9 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class DatosView {
 
@@ -59,13 +70,13 @@ public class DatosView {
 
 		
 		JButton btnlog_out = new JButton("");
-		btnlog_out.setBounds(23, 937, 56, 56);
+		btnlog_out.setBounds(22, 937, 56, 56);
 		btnlog_out.setForeground(Color.WHITE);
 		Icon imglogout = new ImageIcon(imgLogout.getImage().getScaledInstance( 56, 56,  java.awt.Image.SCALE_SMOOTH )) ;  
 		btnlog_out.setIcon(imglogout);
 		panel.add(btnlog_out);
 		
-		JButton btnback = new JButton("Back");
+		JButton btnback= new JButton("");
 		btnback.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -74,11 +85,16 @@ public class DatosView {
 				frame.setVisible(false);
 			}
 		});
-		btnback.setBounds(23, 853, 56, 56);
+
+		btnback.setBounds(22, 856, 56, 56);
 		btnback.setForeground(Color.WHITE);
 		Icon iconback = new ImageIcon(imgBack.getImage().getScaledInstance( 56, 56,  java.awt.Image.SCALE_SMOOTH )) ;  
 		btnback.setIcon(iconback);
 		panel.add(btnback);
+		panel.add(btnback);
+		
+		
+
 		
 		JButton btnSearch = new JButton("");
 		btnSearch.setBounds(23, 34, 56, 56);
@@ -123,33 +139,82 @@ public class DatosView {
 		lblRating.setBounds(45, 418, 660, 59);
 		panel_1.add(lblRating);
 		
-		JLabel lblDirector = new JLabel("Director: " + peli.director);
-		lblDirector.setHorizontalAlignment(SwingConstants.LEFT);
-		lblDirector.setForeground(Color.WHITE);
-		lblDirector.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblDirector.setBounds(45, 494, 660, 59);
-		panel_1.add(lblDirector);
-		
 		JLabel lblDuracion = new JLabel("Duration: " +String.valueOf(peli.duration) + " mins.");
 		lblDuracion.setHorizontalAlignment(SwingConstants.LEFT);
 		lblDuracion.setForeground(Color.WHITE);
 		lblDuracion.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblDuracion.setBounds(45, 564, 660, 59);
+		lblDuracion.setBounds(45, 501, 660, 59);
 		panel_1.add(lblDuracion);
 		
 		JLabel lblDate = new JLabel("Release Date: " +peli.releaseDate);
 		lblDate.setHorizontalAlignment(SwingConstants.LEFT);
 		lblDate.setForeground(Color.WHITE);
 		lblDate.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblDate.setBounds(45, 646, 660, 59);
+		lblDate.setBounds(45, 587, 660, 59);
 		panel_1.add(lblDate);
 		
 		JLabel lblType = new JLabel("Type: " +peli.type);
 		lblType.setHorizontalAlignment(SwingConstants.LEFT);
 		lblType.setForeground(Color.WHITE);
 		lblType.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblType.setBounds(45, 709, 660, 59);
+		lblType.setBounds(45, 669, 660, 59);
 		panel_1.add(lblType);
+		
+		String actorpapel = "";
+		String actorconcat = "";
+		System.out.println(peli.id);
+		ArrayList<ActorFilm> ListaActores = DAO.getActor(peli.id);
+		for (int i = 0; i < ListaActores.size(); i++) {
+						
+			String nombreActor = ListaActores.get(i).getName();
+			String papelActor = ListaActores.get(i).getCharacter();
+			
+			 actorpapel = nombreActor + " as " + papelActor;
+		 	actorconcat =  actorconcat + actorpapel + ", ";
+		}
+		
+				
+		JLabel lblActores = new JLabel("<html>" +"Actors: "+ actorconcat);
+		lblActores.setHorizontalAlignment(SwingConstants.LEFT);
+		lblActores.setForeground(Color.WHITE);
+		lblActores.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblActores.setBounds(382, 571, 1072, 240);
+		panel_1.add(lblActores);
+		
+		String companyconcat = "";
+		ArrayList<CompanyPelicula> ListaCompany = DAO.getCompany(peli.id);
+		for (int i = 0; i < ListaCompany.size(); i++) {
+						
+			String nombre = ListaCompany.get(i).getPeliculaid();
+			
+		 	companyconcat =  companyconcat + nombre + ", ";
+		}
+		
+		
+		JLabel lblCompany = new JLabel("<html>" +"Companies: "+companyconcat);
+		lblCompany.setHorizontalAlignment(SwingConstants.LEFT);
+		lblCompany.setForeground(Color.WHITE);
+		lblCompany.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblCompany.setBounds(382, 495, 1072, 65);
+		panel_1.add(lblCompany);
+		
+		String directorconcat = "";
+		ArrayList<DirectorPelicula> ListaDirector = DAO.getDirector(peli.id);
+		for (int i = 0; i <ListaDirector.size(); i++) {
+						
+			String nombre = ListaDirector.get(i).getDirector();
+			
+		 	directorconcat =  directorconcat + nombre + ", ";
+		}
+		
+		
+		
+		JLabel lblDirector = new JLabel("<html>" +"Directors: "+ directorconcat);
+		lblDirector.setHorizontalAlignment(SwingConstants.LEFT);
+		lblDirector.setForeground(Color.WHITE);
+		lblDirector.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblDirector.setBounds(382, 399, 1072, 65);
+		panel_1.add(lblDirector);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setBounds(10, 0, frame.getWidth(), frame.getHeight());
